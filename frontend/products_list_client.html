@@ -6,7 +6,13 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
 
+    <!--Google fonts api-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse">
@@ -30,12 +36,12 @@
               </li>
             </ul>
           </div>
-            <a class="btn" aria-current="page" href="#">
+            <a class="btn" aria-current="page" data-bs-toggle="modal" data-bs-target="#notificationModal">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
                     <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
                 </svg>
             </a>
-            <a class="btn" aria-current="page" href="#">
+            <a class="btn" aria-current="page" data-bs-toggle="modal" data-bs-target="#cartModal">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                 </svg>
@@ -44,127 +50,291 @@
                 @media only screen and (max-width: 600px) {
                     .navbar form {
                         width: 100%;
-                        margin-top: 10px;
                     }
                 }
             </style>
             <form class="d-flex mx-auto" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
+              <input class="form-control me-2" type="search" placeholder="Cerca prodotto" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Cerca</button>
             </form>
         </div>
       </nav>
 
-    <div class="main">
-        <div class="container mt-3">
-            <!--START banner section-->
-            <style>
-                @media only screen and (min-width: 600px) {
-                    .main .image-banner {
-                        display: flex;
-                    }
-                    .left-hand, .right-hand{
-                        width: 50%;
-                    }
-
-                    .right-hand{
-                        padding-left: 20px;
-                    }
-                }
-            </style>
-            <h1 class="text-center">Negozio di orologi</h1>
-            <section class="image-banner mt-3">
-                <div class="left-hand w-100">
-                    <img src="images/image-banner.png" 
-                    alt="Esempio immagine" 
-                    class="img-fluid d-md-block" 
-                    style="width: 100%; max-width: 600px;">
-                </div>
-                <div class="right-hand w-100 mt-3">
-                    <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at neque nisl. In faucibus sapien vitae nisl laoreet finibus. Donec id placerat ante. Praesent porttitor dui quis nibh volutpat, quis euismod lacus egestas. Phasellus nec dignissim neque, nec sodales arcu. Nunc blandit enim non erat pretium ornare. Cras condimentum at nisi ac tincidunt. Praesent sed laoreet tortor. Aenean ornare sem elit, sit amet venenatis diam viverra sed. In viverra arcu nec dictum consequat. Maecenas rutrum elit at vestibulum elementum. Vestibulum eget placerat sapien, non feugiat ipsum. Nulla turpis urna, malesuada id felis quis, vulputate scelerisque nibh. Donec sed dolor dolor. Donec ultricies eros non tempor dapibus.</p>
-                    <a class="btn btn-primary w-100 mx-auto" href="#" >Visita il nostro catalogo</a>
-                </div>
-            </section>
-            <!--END banner section -->
-            <!--START cards section-->
-            <section class="cards mt-4">
-                <div class="row">
-                    <div class="col-md-3">
-                      <div class="card mx-auto mt-3" style="width: 18rem;">
-                        <img src="images/img-card-example.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Rolex 1895</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div class="card-body">
-                          <a href="#" class="card-link">Informazioni</a>
-                          <a href="#" class="card-link">Aggiungi al carrello</a>
-                        </div>
-                      </div>
-                    </div>
-                
-                    <div class="col-md-3">
-                      <div class="card mx-auto mt-3" style="width: 18rem;">
-                        <img src="images/img-card-example.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Rolex 1895</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div class="card-body">
-                          <a href="#" class="card-link">Informazioni</a>
-                          <a href="#" class="card-link">Aggiungi al carrello</a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card mx-auto mt-3" style="width: 18rem;">
-                          <img src="images/img-card-example.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h5 class="card-title">Rolex 1895</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          </div>
-                          <div class="card-body">
-                            <a href="#" class="card-link">Informazioni</a>
-                            <a href="#" class="card-link">Aggiungi al carrello</a>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-3">
-                        <div class="card mx-auto mt-3" style="width: 18rem;">
-                          <img src="images/img-card-example.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h5 class="card-title">Rolex 1895</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          </div>
-                          <div class="card-body">
-                            <a href="#" class="card-link">Informazioni</a>
-                            <a href="#" class="card-link">Aggiungi al carrello</a>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-3">
-                        <div class="card mx-auto mt-3" style="width: 18rem;">
-                          <img src="images/img-card-example.png" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h5 class="card-title">Rolex 1895</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          </div>
-                          <div class="card-body">
-                            <a href="#" class="card-link">Informazioni</a>
-                            <a href="#" class="card-link">Aggiungi al carrello</a>
-                          </div>
-                        </div>
-                      </div>
-                
-                    <!-- Altre card qui -->
+      <!--START modal notifications-->
+      <div class="modal fade" id="notificationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="notificationModalLabel">Le tue notifiche</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="notifications-container">
+                <!--Start one notification -->
+                <div class="notification mt-2 p-1 border border-1 border-primary rounded-2">
+                  <div class="notification-header">
+                    <p class="text-start p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-calendar-range" viewBox="0 0 16 16">
+                        <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1M1 9h4a1 1 0 0 1 0 2H1z"/>
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                      </svg>
+                    </p>
                   </div>
-            </section>
-            <!--END cards section -->
+                  <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at neque nisl. In faucibus sapien vitae nisl laoreet finibus. Donec id placerat ante. Praesent porttitor dui quis nibh volutpat</p>
+                  <p class="text text-end text-secondary">12/01/2024</p>
+                </div>
+                <!--End one notification -->
+                <!--Start one notification -->
+                <div class="notification mt-2 p-1 border border-1 border-primary rounded-2">
+                  <div class="notification-header">
+                    <p class="text-start p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-calendar-range" viewBox="0 0 16 16">
+                        <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1M1 9h4a1 1 0 0 1 0 2H1z"/>
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                      </svg>
+                    </p>
+                  </div>
+                  <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at neque nisl. In faucibus sapien vitae nisl laoreet finibus. Donec id placerat ante. Praesent porttitor dui quis nibh volutpat</p>
+                  <p class="text text-end text-secondary">12/01/2024</p>
+                </div>
+                <!--End one notification -->
+                <!--Start one notification -->
+                <div class="notification mt-2 p-1 border border-1 border-primary rounded-2">
+                  <div class="notification-header">
+                    <p class="text-start p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-calendar-range" viewBox="0 0 16 16">
+                        <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1M1 9h4a1 1 0 0 1 0 2H1z"/>
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                      </svg>
+                    </p>
+                  </div>
+                  <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at neque nisl. In faucibus sapien vitae nisl laoreet finibus. Donec id placerat ante. Praesent porttitor dui quis nibh volutpat</p>
+                  <p class="text text-end text-secondary">12/01/2024</p>
+                </div>
+                <!--End one notification -->
+                <!--Start one notification -->
+                <div class="notification mt-2 p-1 border border-1 border-primary rounded-2">
+                  <div class="notification-header">
+                    <p class="text-start p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-calendar-range" viewBox="0 0 16 16">
+                        <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1M1 9h4a1 1 0 0 1 0 2H1z"/>
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                      </svg>
+                    </p>
+                  </div>
+                  <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at neque nisl. In faucibus sapien vitae nisl laoreet finibus. Donec id placerat ante. Praesent porttitor dui quis nibh volutpat</p>
+                  <p class="text text-end text-secondary">12/01/2024</p>
+                </div>
+                <!--End one notification -->
+                
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Esci</button>
+            </div>
+          </div>
         </div>
+      </div>
+      <!--END modal notifications-->
+
+      <!--START modal cart-->
+      <div class="modal fade" id="cartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="cartModalLabel">Il tuo carrello</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!--Start product in cart-->
+              <div class="product border border-1 border-primary mt-2 rounded-2 p-1 d-flex">
+                <img src="images/img-card-example.png" width="50" height="50"/>
+                <p class="text text-start fs-5 w-50 mt-2"> Nome articolo</p>
+                <p class="text text-end fs-5 w-50 mt-2">Pz: 5  
+                  <span>
+                    <a class="text-dark text-decoration-none add-product-cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg>
+                    </a>
+                    <a class="text-dark text-decoration-none toggle-product-cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg>
+                    </a>
+                  </span> 
+                </p>
+              </div>
+              <!--End product in cart-->
+              <!--Start product in cart-->
+              <div class="product border border-1 border-primary mt-2 rounded-2 p-1 d-flex">
+                <img src="images/img-card-example.png" width="50" height="50"/>
+                <p class="text text-start fs-5 w-50 mt-2"> Nome articolo</p>
+                <p class="text text-end fs-5 w-50 mt-2">Pz: 5  
+                  <span>
+                    <a class="text-dark text-decoration-none add-product-cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg>
+                    </a>
+                    <a class="text-dark text-decoration-none toggle-product-cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg>
+                    </a>
+                  </span> 
+                </p>
+              </div>
+              <!--End product in cart-->
+              <!--Start product in cart-->
+              <div class="product border border-1 border-primary mt-2 rounded-2 p-1 d-flex">
+                <img src="images/img-card-example.png" width="50" height="50"/>
+                <p class="text text-start fs-5 w-50 mt-2"> Nome articolo</p>
+                <p class="text text-end fs-5 w-50 mt-2">Pz: 5  
+                  <span>
+                    <a class="text-dark text-decoration-none add-product-cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                      </svg>
+                    </a>
+                    <a class="text-dark text-decoration-none toggle-product-cart">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                      </svg>
+                    </a>
+                  </span> 
+                </p>
+              </div>
+              <!--End product in cart-->
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Esci</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Vai al checkout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--END modal cart-->
+
+    <!--START main-->
+    <div class="main">
+      <div class="container mt-3">
+        <!--START banner section-->
+        <style>
+            @media only screen and (min-width: 600px) {
+                .main .image-banner {
+                    display: flex;
+                }
+                .left-hand, .right-hand{
+                    width: 50%;
+                }
+      
+                .right-hand{
+                    padding-left: 20px;
+                }
+            }
+        </style>
+        <h1 class="text-center">Negozio di orologi</h1>
+        <section class="image-banner mt-3">
+            <div class="left-hand w-100">
+                <img src="images/image-banner.png" 
+                alt="Esempio immagine" 
+                class="img-fluid d-md-block" 
+                style="width: 100%; max-width: 600px;">
+            </div>
+            <div class="right-hand w-100 mt-3">
+                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at neque nisl. In faucibus sapien vitae nisl laoreet finibus. Donec id placerat ante. Praesent porttitor dui quis nibh volutpat, quis euismod lacus egestas. Phasellus nec dignissim neque, nec sodales arcu. Nunc blandit enim non erat pretium ornare. Cras condimentum at nisi ac tincidunt. Praesent sed laoreet tortor. Aenean ornare sem elit, sit amet venenatis diam viverra sed. In viverra arcu nec dictum consequat. Maecenas rutrum elit at vestibulum elementum. Vestibulum eget placerat sapien, non feugiat ipsum. Nulla turpis urna, malesuada id felis quis, vulputate scelerisque nibh. Donec sed dolor dolor. Donec ultricies eros non tempor dapibus.</p>
+                <a class="btn btn-primary w-100 mx-auto" href="#" >Visita il nostro catalogo</a>
+            </div>
+        </section>
+        <!--END banner section -->
+        <!--START cards section-->
+        <section class="cards mt-4">
+            <div class="row">
+                <div class="col-md-3">
+                  <div class="card mx-auto mt-3" style="width: 18rem;">
+                    <img src="images/img-card-example.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Rolex 1895</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <div class="card-body">
+                      <a href="#" class="card-link">Informazioni</a>
+                      <a href="#" class="card-link">Aggiungi al carrello</a>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="col-md-3">
+                  <div class="card mx-auto mt-3" style="width: 18rem;">
+                    <img src="images/img-card-example.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Rolex 1895</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <div class="card-body">
+                      <a href="#" class="card-link">Informazioni</a>
+                      <a href="#" class="card-link">Aggiungi al carrello</a>
+                    </div>
+                  </div>
+                </div>
+      
+                <div class="col-md-3">
+                    <div class="card mx-auto mt-3" style="width: 18rem;">
+                      <img src="images/img-card-example.png" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Rolex 1895</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      </div>
+                      <div class="card-body">
+                        <a href="#" class="card-link">Informazioni</a>
+                        <a href="#" class="card-link">Aggiungi al carrello</a>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="col-md-3">
+                    <div class="card mx-auto mt-3" style="width: 18rem;">
+                      <img src="images/img-card-example.png" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Rolex 1895</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      </div>
+                      <div class="card-body">
+                        <a href="#" class="card-link">Informazioni</a>
+                        <a href="#" class="card-link">Aggiungi al carrello</a>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="col-md-3">
+                    <div class="card mx-auto mt-3" style="width: 18rem;">
+                      <img src="images/img-card-example.png" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Rolex 1895</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      </div>
+                      <div class="card-body">
+                        <a href="#" class="card-link">Informazioni</a>
+                        <a href="#" class="card-link">Aggiungi al carrello</a>
+                      </div>
+                    </div>
+                  </div>
+            
+                <!-- Altre card qui -->
+              </div>
+        </section>
+        <!--END cards section -->
+      </div>
     </div>
+    <!--END main-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 </body>
