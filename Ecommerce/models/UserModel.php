@@ -15,10 +15,10 @@ class UserModel extends BaseModel
     public static string $nome_tabella = 'Users';
     protected array $_fields = [
         "id",
-        "fullname",
         "email",
-        "password",
-        "loggedIn",
+        "nome",
+        "cognome",
+        "password"
     ];
 
 

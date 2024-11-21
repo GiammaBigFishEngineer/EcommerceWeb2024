@@ -46,12 +46,12 @@ export function createProductElement(cart, product) {
 
     // Crea il link per aggiungere il prodotto al carrello
     const addLink = document.createElement("a");
-    addLink.classList.add("text-dark", "text-decoration-none", "add-product-cart", "fs-4", "p-2");
+    addLink.classList.add("text-light", "text-decoration-none", "add-product-cart", "fs-4", "p-2");
     addLink.textContent = "+"; // Testo per aggiungere al carrello
 
     // Crea il link per rimuovere il prodotto dal carrello
     const removeLink = document.createElement("a");
-    removeLink.classList.add("text-dark", "text-decoration-none", "toggle-product-cart", "fs-4", "p-2");
+    removeLink.classList.add("text-light", "text-decoration-none", "toggle-product-cart", "fs-4", "p-2");
     removeLink.textContent = "-"; // Testo per rimuovere dal carrello
 
     // Aggiungi gli event listeners per eseguire le funzioni al click

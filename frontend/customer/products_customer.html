@@ -14,8 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse">
+  <body class="bg-dark text-light">
+    <nav class="navbar navbar-expand-lg bg-dark text-light navbar-collapse" data-bs-theme="dark">
         <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -48,7 +48,7 @@
             </a>
             <form class="d-flex mx-auto" role="search">
                 <input class="form-control me-2" type="search" placeholder="Cerca prodotto" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Cerca</button>
+                <button class="btn btn-outline-primary" type="submit">Cerca</button>
             </form>
         </div>
       </nav>
@@ -56,10 +56,10 @@
       <!--START modal notifications-->
       <div class="modal fade" id="notificationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content">
+          <div class="modal-content bg-dark">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="notificationModalLabel">Le tue notifiche</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <div class="notifications-container">
@@ -133,10 +133,10 @@
       <!--START modal cart-->
       <div class="modal fade" id="cartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content">
+          <div class="modal-content bg-dark">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="cartModalLabel">Il tuo carrello</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div id="products-list" class="modal-body">
               
@@ -159,14 +159,14 @@
       <div class="container mt-3">
         <!--START banner section-->
         <h1 class="text-center">Negozio di orologi</h1>
-        <div class="image-banner mt-3">
-            <div class="left-hand w-100">
+        <div class="row mt-3">
+            <div class="col-12 col-md-6">
                 <img src="images/image-banner.png" 
                 alt="Esempio immagine" 
                 class="img-fluid d-md-block" 
                 style="width: 100%; max-width: 600px;">
             </div>
-            <div class="right-hand w-100 mt-3">
+            <div class="col-12 col-md-6 mt-3">
                 <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at neque nisl. In faucibus sapien vitae nisl laoreet finibus. Donec id placerat ante. Praesent porttitor dui quis nibh volutpat, quis euismod lacus egestas. Phasellus nec dignissim neque, nec sodales arcu. Nunc blandit enim non erat pretium ornare. Cras condimentum at nisi ac tincidunt. Praesent sed laoreet tortor. Aenean ornare sem elit, sit amet venenatis diam viverra sed. In viverra arcu nec dictum consequat. Maecenas rutrum elit at vestibulum elementum. Vestibulum eget placerat sapien, non feugiat ipsum. Nulla turpis urna, malesuada id felis quis, vulputate scelerisque nibh. Donec sed dolor dolor. Donec ultricies eros non tempor dapibus.</p>
                 <a class="btn btn-primary w-100 mx-auto" href="#" >Visita il nostro catalogo</a>
             </div>
