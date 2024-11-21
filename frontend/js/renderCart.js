@@ -19,7 +19,7 @@ export function createProductElement(cart, product) {
 
     // Crea il paragrafo per il nome del prodotto
     const nameParagraph = document.createElement("p");
-    nameParagraph.classList.add("text", "text-start", "fs-5", "w-50", "mt-2");
+    nameParagraph.classList.add("text", "text-start", "fs-5", "w-50", "mt-2", "ps-2");
     nameParagraph.textContent = product.name; // Nome del prodotto
 
     // Crea un paragrafo <p> e aggiungi le classi

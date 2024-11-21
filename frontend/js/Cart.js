@@ -13,6 +13,10 @@ export class Cart {
         this.products = [];
     }
 
+    clearCart(){
+        this.products = [];
+    }
+
     /**
      * 
      * @param {*} product is the product to add in cart

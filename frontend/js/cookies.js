@@ -35,3 +35,15 @@ export function loadCartFromCookie() {
     return new Cart(); // Se il cookie non esiste, ritorna un carrello vuoto
 }
 
+/* Test
+const cart = new Cart();
+cart.clearCart();
+const prod1 = new Product(0,"pizza",3.00,1,'images/img-card-example.png');
+const prod2 = new Product(1,"mele",1.00,1,'images/img-card-example.png');
+const prod3 = new Product(2,"pere",5.00,1,'images/img-card-example.png');
+cart.addProduct(prod1);
+cart.addProduct(prod2);
+cart.addProduct(prod3);
+cart.showCart();
+saveCartToCookie(cart);
+ */
