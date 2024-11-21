@@ -21,7 +21,7 @@ function getCookie(name) {
 }
 
 // Salvare il carrello nei cookie
-function saveCartToCookie(cart) {
+export function saveCartToCookie(cart) {
     const cartJSON = cart.toJSON();
     setCookie('cart', cartJSON, 1); // Salva il cookie per 1 giorno
 }
@@ -34,15 +34,4 @@ export function loadCartFromCookie() {
     }
     return new Cart(); // Se il cookie non esiste, ritorna un carrello vuoto
 }
-
-
-// Esempio d'uso
-const cart = new Cart();
-cart.addProduct(new Product(0, "Mela", 0.5, 3));
-cart.addProduct(new Product(1, "Pane", 1.2, 1));
-cart.addProduct(new Product(2, "Pera", 2.0, 5));
-cart.addProduct(new Product(3, "pizza", 4.0, 2));
-
-// Salva nei cookie
-saveCartToCookie(cart);
 

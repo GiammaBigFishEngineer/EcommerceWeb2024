@@ -1,4 +1,7 @@
-//Inserisce nella checkout page un <li> per ogni elemento del carrello
+/**
+ * Insert <li> tag in DOM with product info, used in checkout page.
+ * @param {*} p is the product to render
+ */
 export function addToCartList(p) {
     // Seleziona l'elemento della lista nel DOM
     const cartList = document.getElementById("cart-list-checkout");
@@ -31,7 +34,10 @@ export function addToCartList(p) {
     cartList.appendChild(listItem);
 }
 
-// Funzione per aggiungere il totale del carrello
+/**
+ * Add the total of cart to DOM in checkout page
+ * @param {*} total is the amount of cart to render
+ */
 export function addTotalToCart(total) {
 
     // Seleziona l'elemento della lista nel DOM
@@ -57,6 +63,10 @@ export function addTotalToCart(total) {
     cartList.appendChild(totalItem);
 }
 
+/**
+ * Render the number of products in cart in checkout page
+ * @param {*} totalCart is the count of products in cart
+ */
 export function addTotalItemCart(totalCart){
     const totalAmountCartDiv = document.getElementById("total-count-cart");
 

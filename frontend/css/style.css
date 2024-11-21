@@ -6,3 +6,22 @@ body {
   font-weight: 10;
   font-style: normal;
 }
+
+@media only screen and (max-width: 600px) {
+  .navbar form {
+      width: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .main .image-banner {
+      display: flex;
+  }
+  .left-hand, .right-hand{
+      width: 50%;
+  }
+
+  .right-hand{
+      padding-left: 20px;
+  }
+}

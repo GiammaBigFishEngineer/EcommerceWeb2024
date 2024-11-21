@@ -1,19 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     
     <link rel="stylesheet" href="css/style.css">
 
     <!--Google fonts api-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-</head>
+  </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-collapse">
         <div class="container-fluid">
@@ -46,16 +46,9 @@
                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
                 </svg>
             </a>
-            <style>
-                @media only screen and (max-width: 600px) {
-                    .navbar form {
-                        width: 100%;
-                    }
-                }
-            </style>
             <form class="d-flex mx-auto" role="search">
-              <input class="form-control me-2" type="search" placeholder="Cerca prodotto" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Cerca</button>
+                <input class="form-control me-2" type="search" placeholder="Cerca prodotto" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Cerca</button>
             </form>
         </div>
       </nav>
@@ -145,72 +138,10 @@
               <h1 class="modal-title fs-5" id="cartModalLabel">Il tuo carrello</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div id="products-list" class="modal-body">
+              
               <!--Start product in cart-->
-              <div class="product border border-1 border-primary mt-2 rounded-2 p-1 d-flex">
-                <img src="images/img-card-example.png" width="50" height="50"/>
-                <p class="text text-start fs-5 w-50 mt-2"> Nome articolo</p>
-                <p class="text text-end fs-5 w-50 mt-2">Pz: 5  
-                  <span>
-                    <a class="text-dark text-decoration-none add-product-cart">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                      </svg>
-                    </a>
-                    <a class="text-dark text-decoration-none toggle-product-cart">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-                      </svg>
-                    </a>
-                  </span> 
-                </p>
-              </div>
-              <!--End product in cart-->
-              <!--Start product in cart-->
-              <div class="product border border-1 border-primary mt-2 rounded-2 p-1 d-flex">
-                <img src="images/img-card-example.png" width="50" height="50"/>
-                <p class="text text-start fs-5 w-50 mt-2"> Nome articolo</p>
-                <p class="text text-end fs-5 w-50 mt-2">Pz: 5  
-                  <span>
-                    <a class="text-dark text-decoration-none add-product-cart">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                      </svg>
-                    </a>
-                    <a class="text-dark text-decoration-none toggle-product-cart">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-                      </svg>
-                    </a>
-                  </span> 
-                </p>
-              </div>
-              <!--End product in cart-->
-              <!--Start product in cart-->
-              <div class="product border border-1 border-primary mt-2 rounded-2 p-1 d-flex">
-                <img src="images/img-card-example.png" width="50" height="50"/>
-                <p class="text text-start fs-5 w-50 mt-2"> Nome articolo</p>
-                <p class="text text-end fs-5 w-50 mt-2">Pz: 5  
-                  <span>
-                    <a class="text-dark text-decoration-none add-product-cart">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                      </svg>
-                    </a>
-                    <a class="text-dark text-decoration-none toggle-product-cart">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-                      </svg>
-                    </a>
-                  </span> 
-                </p>
-              </div>
+              <!--From JS previewCart.js-->
               <!--End product in cart-->
               
             </div>
@@ -338,11 +269,14 @@
         </div>
       </div>
     </div>
+
+    <script src="js/checkout.js" type="module"></script>
+
     <!--END main-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="js/cookies.js" type="module"></script>
-    <script src="js/checkout.js" type="module"></script>
+    <script src="js/previewCart.js" type="module"></script>
 
 </body>
 </html>
