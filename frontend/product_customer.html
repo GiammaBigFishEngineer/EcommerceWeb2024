@@ -190,20 +190,25 @@
                     In viverra arcu nec dictum consequat. Maecenas rutrum elit at vestibulum elementum. Vestibulum eget placerat sapien, non feugiat ipsum. Nulla turpis urna,
                     malesuada id felis quis, vulputate scelerisque nibh. Donec sed dolor dolor. Donec ultricies eros non tempor dapibus.</p>
 
-                <a id="addToCart" class="btn btn-primary">Aggiungi al carrello</a>
+                <a id="liveAlertBtn" class="btn btn-primary" onclick="addProductToCart(11,'prova',5.0,1,'images/img-card-example.png')">Aggiungi al carrello</a>
                 <a class="btn btn-secondary">Torna indietro</a>
+                <!--Start success di conferma aggiunta al carrello-->
+                <div id="successAddedToCart" class="alert alert-success alert-dismissible w-50 mt-3 d-none" role="alert">   
+                  <div>articolo aggiunto con successo</div>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <!--End success di conferma aggiunta al carrello-->
             </div>
         </div>
         </div>
     </div>
+
+    <script src="js/productDetail.js" type="module"></script>
     <!--END main-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" type="module"></script>
     <script src="js/cookies.js" type="module"></script>
     <script src="js/previewCart.js" type="module"></script>
-    <script>
-        
-    </script>
 
 </body>
 </html>
