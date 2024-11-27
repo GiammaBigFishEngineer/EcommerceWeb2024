@@ -1,8 +1,8 @@
-import { loadCartFromCookie } from './cookies.js';
+import { CookieUtils } from './cookies.js';
 import { addToCartList, addTotalToCart, addTotalItemCart } from './renderCheckout.js';
 
 // Ricarica il carrello dai cookie
-const loadedCart = loadCartFromCookie();
+const loadedCart = CookieUtils.loadCartFromCookie();
 loadedCart.showCart();
 const products = loadedCart.getProducts();
 

@@ -1,4 +1,4 @@
-import { saveCartToCookie } from './cookies.js';
+import { CookieUtils } from './cookies.js';
 
 /**
  * 
@@ -60,7 +60,7 @@ export function createProductElement(cart, product) {
         console.log("Elemento aggiunto");
         const valueShowed = document.getElementById(`quantityShowed${product.id}`);
         valueShowed.textContent = `Pz: ${product.quantity} `;
-        saveCartToCookie(cart);
+        CookieUtils.saveCartToCookie(cart);
     });
 
     removeLink.addEventListener("click", () => {
@@ -68,7 +68,7 @@ export function createProductElement(cart, product) {
         console.log("Elemento rimosso");
         const valueShowed = document.getElementById(`quantityShowed${product.id}`);
         valueShowed.textContent = `Pz: ${product.quantity} `;
-        saveCartToCookie(cart);
+        CookieUtils.saveCartToCookie(cart);
     });
 
     // Aggiungi i link per aggiungere e rimuovere al carrello

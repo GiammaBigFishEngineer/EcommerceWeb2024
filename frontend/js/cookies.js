@@ -2,38 +2,68 @@ import { Cart } from './Cart.js';
 import { Product } from './Product.js';
 
 // Funzioni per gestire i cookie
-function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = `expires=${date.toUTCString()}`;
-    document.cookie = `${name}=${value};${expires};path=/`;
-}
 
-function getCookie(name) {
-    const cookies = document.cookie.split(';');
-    for (let cookie of cookies) {
-        const [key, value] = cookie.trim().split('=');
-        if (key === name) {
-            return value;
+/**
+ * Salva un cookie sulla cache del browser
+ * @param {*} name nome del cookie
+ * @param {*} value valore del cookie
+ * @param {*} days durata del cookie
+ */
+
+export class CookieUtils {
+
+    /**
+     * 
+     * @param {*} name nome del cookie
+     * @param {*} value valore del cookie
+     * @param {*} days quanti giorni dura il cookie
+     */
+    static setCookie(name, value, days) {
+        const date = new Date();
+        // Converte i giorni forniti dall'utente in millisecondi
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = `expires=${date.toUTCString()}`;
+        document.cookie = `${name}=${value};${expires};path=/`;
+    }
+    
+    /**
+     * 
+     * @param {*} name il nome del cookie
+     * @returns il valore del cookie associato al suo nome
+     */
+    static getCookie(name) {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            const [key, value] = cookie.trim().split('=');
+            if (key === name) {
+                return value;
+            }
         }
+        return null;
     }
-    return null;
+    
+    /**
+     * Salva il carrello nei cookie come json
+     * @param {*} cart è instanza di Cart.js
+     */
+    static saveCartToCookie(cart) {
+        const cartJSON = cart.toJSON();
+        CookieUtils.setCookie('cart', cartJSON, 1); // Salva il cookie per 1 giorno
+    }
+    
+    /**
+     * 
+     * @returns un'istanza di Cart.js scaricata dai cookies
+     */
+    static loadCartFromCookie() {
+        const cartJSON = CookieUtils.getCookie('cart');
+        if (cartJSON) {
+            return Cart.fromJSON(cartJSON);
+        }
+        return new Cart(); // Se il cookie non esiste, ritorna un carrello vuoto
+    }
 }
 
-// Salvare il carrello nei cookie
-export function saveCartToCookie(cart) {
-    const cartJSON = cart.toJSON();
-    setCookie('cart', cartJSON, 1); // Salva il cookie per 1 giorno
-}
-
-// Caricare il carrello dai cookie
-export function loadCartFromCookie() {
-    const cartJSON = getCookie('cart');
-    if (cartJSON) {
-        return Cart.fromJSON(cartJSON);
-    }
-    return new Cart(); // Se il cookie non esiste, ritorna un carrello vuoto
-}
 
 /* Test
 const cart = new Cart();

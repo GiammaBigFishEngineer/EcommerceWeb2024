@@ -1,6 +1,6 @@
 /**
- * Insert <li> tag in DOM with product info, used in checkout page.
- * @param {*} p is the product to render
+ * Inserisce <li> tag nel DOM con le info del prodotto, usate nella checkout page.
+ * @param {*} p prodotto da reinderizzare
  */
 export function addToCartList(p) {
     // Seleziona l'elemento della lista nel DOM
@@ -35,8 +35,8 @@ export function addToCartList(p) {
 }
 
 /**
- * Add the total of cart to DOM in checkout page
- * @param {*} total is the amount of cart to render
+ * Aggiunge il totale al DOM nella checkout page
+ * @param {*} total è il totale del carrello
  */
 export function addTotalToCart(total) {
 
@@ -64,8 +64,8 @@ export function addTotalToCart(total) {
 }
 
 /**
- * Render the number of products in cart in checkout page
- * @param {*} totalCart is the count of products in cart
+ * Reinderizza il numero di prodotti nel carrello
+ * @param {*} totalCart conto dei prodotti nel carrello
  */
 export function addTotalItemCart(totalCart){
     const totalAmountCartDiv = document.getElementById("total-count-cart");

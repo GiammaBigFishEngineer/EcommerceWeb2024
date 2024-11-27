@@ -1,10 +1,9 @@
-import { Cart } from './Cart.js';
 import { Product } from './Product.js';
-import { loadCartFromCookie, saveCartToCookie } from './cookies.js';
+import { CookieUtils } from './cookies.js';
 import { createProductElement } from './renderCart.js';
 
 // Ricarica il carrello dai cookie
-const loadedCart = loadCartFromCookie();
+const loadedCart = CookieUtils.loadCartFromCookie();
 loadedCart.showCart();
 
 export function addProductToCart(id, name, price, quantity, imagePath) {
@@ -21,7 +20,7 @@ export function addProductToCart(id, name, price, quantity, imagePath) {
     const productElement = createProductElement(loadedCart, product);
     productsList.appendChild(productElement);
 
-    saveCartToCookie(loadedCart);
+    CookieUtils.saveCartToCookie(loadedCart);
 }
 
 // Esponi la funzione al global scope
