@@ -29,7 +29,6 @@ class Dispatcher
     {
         switch ($this->path) {
             
-            
             default:
                 echo "404 HTML<br>";
                 echo $this->path;
