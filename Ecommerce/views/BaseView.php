@@ -2,16 +2,6 @@
 
 require_once(__ROOT__ . '/vendor/autoload.php');
 
-/*
- * OGNI VIEW è ASSOCIATA AL RENDERING DI UNA PAGINA E AL RELATIVO TEMPLATE
- * L'USO DI TWIG PERMETTE DI PASSARE LE VARIABILI AL TEMPLATE IN MODO FACILE E VELOCE
- * 
- * Il seguente echo dentro ad ogni funzione di classe passa i parametri al tempalte
- * echo $this->twig->render('optometria/list.html.twig', [
-            'variabile' => $variabile
-        ]);
- */
-
 class BaseView
 {
     public $twig;
@@ -24,6 +14,11 @@ class BaseView
         if (isset($_SESSION)) $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('get', $_GET);
         $this->twig->addGlobal('post', $_POST);
+
+        // Registra la funzione "asset"
+        $this->twig->addFunction(new \Twig\TwigFunction('asset', function ($path) {
+            return '/templates/public/' . ltrim($path, '/');
+        }));
     }
 
     public function __destruct()

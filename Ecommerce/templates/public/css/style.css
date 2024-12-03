@@ -1,0 +1,55 @@
+/* Common css for all pages */
+
+body {
+  font-family: "Host Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 10;
+  font-style: normal;
+}
+
+.welcome {
+  background-image: url('../images/sfondo.jpeg'); /* Specifica l'immagine di sfondo */
+  background-position: center; /* Centra lo sfondo */
+  background-repeat: no-repeat; /* Evita la ripetizione dell'immagine */
+  background-size: cover; /* Ridimensiona l'immagine per coprire il contenitore */
+}
+
+/* Definizione dell'effetto fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.welcome h1 {
+  opacity: 0; /* Nasconde l'immagine inizialmente */
+  animation: fadeIn 2s ease-in-out forwards; /* Animazione al caricamento */
+}
+
+
+@media only screen and (max-width: 600px) {
+  .navbar form {
+      width: 100%;
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bg-dark {
+  background-color: #273440 !important;
+}
+
+.bg-primary, .btn-primary {
+  background-color: #18778C !important;
+  border: #18778C !important;
+}
+
+.text-primary{
+  color: #18778C !important;
+}

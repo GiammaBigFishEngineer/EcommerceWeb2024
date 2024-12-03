@@ -1,7 +1,7 @@
 <?php
 
 require_once(__ROOT__ . '/config/DB.php');
-require_once(__ROOT__ . '/utils/ClassUtils.php');
+
 
 class BaseModel
 {
