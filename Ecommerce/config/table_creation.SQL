@@ -24,9 +24,11 @@ CREATE TABLE Indirizzo (
     via VARCHAR(255) NOT NULL,
     numero_civico INT NOT NULL,
     citta VARCHAR(100) NOT NULL,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
+    UNIQUE(user_id, via, numero_civico, citta) -- Chiave univoca
 );
+
 
 -- Creazione tabella Product
 CREATE TABLE Product (
@@ -46,9 +48,13 @@ CREATE TABLE Ordine (
     id INT AUTO_INCREMENT PRIMARY KEY,
     data DATE NOT NULL,
     prezzoTotale INT NOT NULL,
-    indirizzo_id INT,
-    FOREIGN KEY (indirizzo_id) REFERENCES Indirizzo(id) ON DELETE CASCADE
+    nome VARCHAR(100),        -- Nome del cliente non registrato
+    cognome VARCHAR(100),     -- Cognome del cliente non registrato
+    indirizzo VARCHAR(255),   -- Indirizzo del cliente non registrato
+    user_id INT NULL,         -- ID utente (opzionale)
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE SET NULL
 );
+
 
 -- Creazione tabella ContenutoOrdine
 CREATE TABLE ContenutoOrdine (

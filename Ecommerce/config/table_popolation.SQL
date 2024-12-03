@@ -39,6 +39,11 @@ VALUES
 ('2024-12-04', 37000, 4),
 ('2024-12-05', 50000, 5);
 
+INSERT INTO Ordine (data, prezzoTotale, nome, cognome, indirizzo)
+VALUES 
+('2024-12-07', 15000, 'Alessandro', 'Rossi', 'Via Firenze 12, Roma');
+
+
 INSERT INTO ContenutoOrdine (idOrdine, idProduct, quantita)
 VALUES 
 (1, 1, 1), -- Ordine #1, Prodotto Submariner, Quantità 1
