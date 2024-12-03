@@ -48,17 +48,31 @@ CREATE TABLE Ordine (
     id INT AUTO_INCREMENT PRIMARY KEY,
     data DATE NOT NULL,
     prezzoTotale INT NOT NULL,
-    nome VARCHAR(100),
-    cognome VARCHAR(100),
-    indirizzo VARCHAR(255),
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE SET NULL,
-    CHECK (
-        (user_id IS NOT NULL AND nome IS NULL AND cognome IS NULL AND indirizzo IS NULL) OR
-        (user_id IS NULL AND nome IS NOT NULL AND cognome IS NOT NULL AND indirizzo IS NOT NULL)
-    )
+    nome VARCHAR(100),        
+    cognome VARCHAR(100),     
+    indirizzo VARCHAR(255),   
+    user_id INT NULL,         
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE SET NULL
 );
 
+-- Creazione del trigger per la tabella Ordine
+DELIMITER $$
+
+CREATE TRIGGER trg_check_order BEFORE INSERT ON Ordine
+FOR EACH ROW
+BEGIN
+    -- Controllo: Se `user_id` è presente, `nome`, `cognome` e `indirizzo` devono essere NULL
+    IF NEW.user_id IS NOT NULL AND (NEW.nome IS NOT NULL OR NEW.cognome IS NOT NULL OR NEW.indirizzo IS NOT NULL) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Se user_id è presente, nome, cognome e indirizzo devono essere NULL';
+    END IF;
+
+    -- Controllo: Se `user_id` è NULL, `nome`, `cognome` e `indirizzo` devono essere NON NULL
+    IF NEW.user_id IS NULL AND (NEW.nome IS NULL OR NEW.cognome IS NULL OR NEW.indirizzo IS NULL) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Se user_id è NULL, nome, cognome e indirizzo devono essere NON NULL';
+    END IF;
+END$$
+
+DELIMITER ;
 
 
 -- Creazione tabella ContenutoOrdine
