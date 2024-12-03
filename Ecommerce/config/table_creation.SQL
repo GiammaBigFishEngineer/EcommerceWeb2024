@@ -48,12 +48,17 @@ CREATE TABLE Ordine (
     id INT AUTO_INCREMENT PRIMARY KEY,
     data DATE NOT NULL,
     prezzoTotale INT NOT NULL,
-    nome VARCHAR(100),        -- Nome del cliente non registrato
-    cognome VARCHAR(100),     -- Cognome del cliente non registrato
-    indirizzo VARCHAR(255),   -- Indirizzo del cliente non registrato
-    user_id INT NULL,         -- ID utente (opzionale)
-    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE SET NULL
+    nome VARCHAR(100),
+    cognome VARCHAR(100),
+    indirizzo VARCHAR(255),
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE SET NULL,
+    CHECK (
+        (user_id IS NOT NULL AND nome IS NULL AND cognome IS NULL AND indirizzo IS NULL) OR
+        (user_id IS NULL AND nome IS NOT NULL AND cognome IS NOT NULL AND indirizzo IS NOT NULL)
+    )
 );
+
 
 
 -- Creazione tabella ContenutoOrdine
