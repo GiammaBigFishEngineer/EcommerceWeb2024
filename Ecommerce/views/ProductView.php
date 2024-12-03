@@ -1,7 +1,5 @@
 <?php
 
-require_once(__ROOT__ . '/vendor/autoload.php');
-
 require_once('BaseView.php');
 
 class ProductView extends BaseView

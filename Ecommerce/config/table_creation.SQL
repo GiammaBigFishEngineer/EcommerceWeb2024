@@ -24,14 +24,16 @@ CREATE TABLE Indirizzo (
     via VARCHAR(255) NOT NULL,
     numero_civico INT NOT NULL,
     citta VARCHAR(100) NOT NULL,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
+    UNIQUE(user_id, via, numero_civico, citta) -- Chiave univoca
 );
+
 
 -- Creazione tabella Product
 CREATE TABLE Product (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    unitCost INT NOT NULL,
+    UnitCost INT NOT NULL,
     name VARCHAR(255) NOT NULL,
     marca VARCHAR(100),
     descrizione TEXT,
@@ -46,9 +48,13 @@ CREATE TABLE Ordine (
     id INT AUTO_INCREMENT PRIMARY KEY,
     data DATE NOT NULL,
     prezzoTotale INT NOT NULL,
-    indirizzo_id INT,
-    FOREIGN KEY (indirizzo_id) REFERENCES Indirizzo(id) ON DELETE CASCADE
+    nome VARCHAR(100),        
+    cognome VARCHAR(100),     
+    indirizzo VARCHAR(255),   
+    user_id INT NULL,         
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE SET NULL
 );
+
 
 -- Creazione tabella ContenutoOrdine
 CREATE TABLE ContenutoOrdine (
@@ -59,8 +65,6 @@ CREATE TABLE ContenutoOrdine (
     FOREIGN KEY (idOrdine) REFERENCES Ordine(id) ON DELETE CASCADE,
     FOREIGN KEY (idProduct) REFERENCES Product(id) ON DELETE CASCADE
 );
-
--- Popolamento database --
 
 
 INSERT INTO User (email, password, nome, cognome, venditore)
@@ -86,7 +90,7 @@ VALUES
 ('Via Carlo Magno', 20, 'Cosenza', 4),
 ('Via Roma', 45, 'Napoli', 5);
 
-INSERT INTO Product (unitCost, name, marca, descrizione, condizioni, imgPath1, imgPath2, imgPath3)
+INSERT INTO Product (UnitCost, name, marca, descrizione, condizioni, imgPath1, imgPath2, imgPath3)
 VALUES 
 (13000, 'Submariner', 'Rolex', 'Orologio subacqueo di alta gamma', 'Ottime', 'submariner1.jpg', 'submariner2.jpg', 'submariner3.jpg'),
 (15000, 'Daytona', 'Rolex', 'Cronografo classico', 'Nuovo', 'daytona1.jpg', 'daytona2.jpg', 'daytona3.jpg'),
@@ -95,13 +99,18 @@ VALUES
 (25000, 'Royal Oak', 'Audemars Piguet', 'Icona dell’alta orologeria', 'Ottime', 'royaloak1.jpg', 'royaloak2.jpg', 'royaloak3.jpg'),
 (12000, 'Seamaster', 'Omega', 'Orologio per immersioni', 'Nuovo', 'seamaster1.jpg', 'seamaster2.jpg', 'seamaster3.jpg');
 
-INSERT INTO Ordine (data, prezzoTotale, indirizzo_id)
+INSERT INTO Ordine (data, prezzoTotale)
 VALUES 
-('2024-12-01', 23000, 1),
-('2024-12-02', 15000, 2),
-('2024-12-03', 40000, 3),
-('2024-12-04', 37000, 4),
-('2024-12-05', 50000, 5);
+('2024-12-01', 23000),
+('2024-12-02', 15000),
+('2024-12-03', 40000),
+('2024-12-04', 37000),
+('2024-12-05', 50000);
+
+INSERT INTO Ordine (data, prezzoTotale, nome, cognome, indirizzo)
+VALUES 
+('2024-12-07', 15000, 'Alessandro', 'Rossi', 'Via Firenze 12, Roma');
+
 
 INSERT INTO ContenutoOrdine (idOrdine, idProduct, quantita)
 VALUES 
@@ -113,4 +122,3 @@ VALUES
 (4, 2, 2), -- Ordine #4, Prodotto Daytona, Quantità 2
 (5, 6, 2), -- Ordine #5, Prodotto Seamaster, Quantità 2
 (5, 1, 1); -- Ordine #5, Prodotto Submariner, Quantità 1
-

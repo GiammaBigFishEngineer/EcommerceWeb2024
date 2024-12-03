@@ -6,6 +6,14 @@ import { createProductElement } from './renderCart.js';
 const loadedCart = CookieUtils.loadCartFromCookie();
 loadedCart.showCart();
 
+/**
+ * Crea il prodotto e lo aggiunge al carrello per poi mostrare l'allert di conferma.
+ * @param {*} id prodotto da aggiungere
+ * @param {*} name prodotto da aggiungere
+ * @param {*} price prodotto da aggiungere
+ * @param {*} quantity quante unità del singolo prodotto vanno aggiunte al carrello
+ * @param {*} imagePath prodotto da aggiungere
+ */
 export function addProductToCart(id, name, price, quantity, imagePath) {
 
     const product = new Product(id,name,price,quantity,imagePath);

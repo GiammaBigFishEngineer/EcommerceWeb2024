@@ -32,7 +32,7 @@
         <p class="text-danger">Condizioni: {{product.condizioni}}</p>
         <h6>Costo: {{product.unitCost}}€</h6>
         <a id="liveAlertBtn" class="btn btn-primary" onclick="addProductToCart({{product.id}},'{{product.name}}',{{product.unitCost}},1,'{{product.imgPath1}}')">Aggiungi al carrello</a>
-        <a class="btn btn-secondary">Torna indietro</a>
+        <a class="btn btn-secondary" onclick="window.history.back()">Torna indietro</a>
         <!--Start success di conferma aggiunta al carrello-->
         <div id="successAddedToCart" class="alert alert-success alert-dismissible w-50 mt-3 d-none" role="alert">   
             <div>articolo aggiunto con successo</div>

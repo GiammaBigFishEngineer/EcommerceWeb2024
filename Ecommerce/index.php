@@ -29,6 +29,10 @@ class Dispatcher
                 ProductCustomerController::showProduct($_GET["id"]);
                 break;
 
+            case "/checkout":
+                ProductCustomerController::checkout();
+                break;
+
             default:
                 echo "404 HTML<br>";
                 echo $this->path;

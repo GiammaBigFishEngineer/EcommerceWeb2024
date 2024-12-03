@@ -1,6 +1,9 @@
 <?php
 require_once(__ROOT__ . '/models/ProductModel.php');
 require_once(__ROOT__ . '/views/ProductView.php');
+require_once(__ROOT__ . '/models/OrdineModel.php');
+require_once(__ROOT__ . '/models/OrdineProductModel.php');
+require_once(__ROOT__ . '/views/CheckoutView.php');
 
 class ProductCustomerController {
 
@@ -24,5 +27,11 @@ class ProductCustomerController {
 
         $view = new ProductView();
         $view->show($product);
+    }
+
+    public static function checkout() {
+        
+        $view = new CheckoutView();
+        $view->render();
     }
 }
