@@ -33,7 +33,7 @@ CREATE TABLE Indirizzo (
 -- Creazione tabella Product
 CREATE TABLE Product (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    UnitCost INT NOT NULL,
+    unitCost INT NOT NULL,
     name VARCHAR(255) NOT NULL,
     marca VARCHAR(100),
     descrizione TEXT,
@@ -49,8 +49,10 @@ CREATE TABLE Ordine (
     data DATE NOT NULL,
     prezzoTotale INT NOT NULL,
     nome VARCHAR(100),        
-    cognome VARCHAR(100),     
-    indirizzo VARCHAR(255),   
+    cognome VARCHAR(100),
+    email VARCHAR(200),     
+    indirizzo VARCHAR(255),
+    citta VARCHAR(100),
     user_id INT NULL,         
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE SET NULL
 );
@@ -66,59 +68,45 @@ CREATE TABLE ContenutoOrdine (
     FOREIGN KEY (idProduct) REFERENCES Product(id) ON DELETE CASCADE
 );
 
-
 INSERT INTO User (email, password, nome, cognome, venditore)
-VALUES 
+VALUES
 ('mario.rossi@example.com', 'password123', 'Mario', 'Rossi', FALSE),
-('lucia.verdi@example.com', 'password456', 'Lucia', 'Verdi', TRUE),
-('sofia.carli@example.com', 'password789', 'Sofia', 'Carli', TRUE),
-('luca.neri@example.com', 'password321', 'Luca', 'Neri', FALSE),
-('giulia.bianchi@example.com', 'password654', 'Giulia', 'Bianchi', TRUE);
+('lucia.bianchi@example.com', 'securepassword', 'Lucia', 'Bianchi', TRUE),
+('giovanni.verdi@example.com', 'password456', 'Giovanni', 'Verdi', FALSE);
+
 
 INSERT INTO Notifiche (testo, data, user_id)
-VALUES 
-('Nuovo ordine ricevuto', '2024-12-01', 2),
-('Prodotto aggiornato: Submariner', '2024-12-02', 3),
-('Stock di Daytona rinnovato', '2024-12-03', 3),
-('Modifica prezzo: Santos', '2024-12-04', 2);
+VALUES
+('Nuova notifica per te!', '2024-12-01', 1),
+('Il tuo ordine è stato spedito.', '2024-12-02', 2),
+('Promozione speciale in corso!', '2024-12-03', 3);
+
 
 INSERT INTO Indirizzo (via, numero_civico, citta, user_id)
-VALUES 
-('Via dei Tulipani', 4, 'Bologna', 1),
-('Via Decio Raggi', 15, 'Milano', 2),
-('Piazza XX Settembre', 10, 'Torino', 3),
-('Via Carlo Magno', 20, 'Cosenza', 4),
-('Via Roma', 45, 'Napoli', 5);
+VALUES
+('Via Roma', 10, 'Milano', 1),
+('Viale Europa', 5, 'Torino', 2),
+('Via Verdi', 20, 'Bologna', 3);
 
-INSERT INTO Product (UnitCost, name, marca, descrizione, condizioni, imgPath1, imgPath2, imgPath3)
-VALUES 
-(13000, 'Submariner', 'Rolex', 'Orologio subacqueo di alta gamma', 'Ottime', 'submariner1.jpg', 'submariner2.jpg', 'submariner3.jpg'),
-(15000, 'Daytona', 'Rolex', 'Cronografo classico', 'Nuovo', 'daytona1.jpg', 'daytona2.jpg', 'daytona3.jpg'),
-(8000, 'Santos', 'Cartier', 'Orologio elegante', 'Nuovo', 'santos1.jpg', 'santos2.jpg', 'santos3.jpg'),
-(40000, 'Nautilus', 'Patek Philippe', 'Orologio di lusso', 'Nuovo', 'nautilus1.jpg', 'nautilus2.jpg', 'nautilus3.jpg'),
-(25000, 'Royal Oak', 'Audemars Piguet', 'Icona dell’alta orologeria', 'Ottime', 'royaloak1.jpg', 'royaloak2.jpg', 'royaloak3.jpg'),
-(12000, 'Seamaster', 'Omega', 'Orologio per immersioni', 'Nuovo', 'seamaster1.jpg', 'seamaster2.jpg', 'seamaster3.jpg');
 
-INSERT INTO Ordine (data, prezzoTotale)
-VALUES 
-('2024-12-01', 23000),
-('2024-12-02', 15000),
-('2024-12-03', 40000),
-('2024-12-04', 37000),
-('2024-12-05', 50000);
+INSERT INTO Product (unitCost, name, marca, descrizione, condizioni, imgPath1, imgPath2, imgPath3)
+VALUES
+(5000, 'Orologio Lusso A1', 'Rolex', 'Orologio da polso di lusso, edizione limitata, con movimento automatico.', 'Nuovo', 'path/to/rolex_a1_1.jpg', 'path/to/rolex_a1_2.jpg', 'path/to/rolex_a1_3.jpg'),
+(1200, 'Orologio Elegante B2', 'Omega', 'Orologio elegante con cinturino in pelle, quadrante con datario.', 'Nuovo', 'path/to/omega_b2_1.jpg', 'path/to/omega_b2_2.jpg', 'path/to/omega_b2_3.jpg'),
+(3500, 'Orologio Sportivo C3', 'Tag Heuer', 'Orologio sportivo con cronografo, resistenza all’acqua fino a 100 metri.', 'Nuovo', 'path/to/tag_heuer_c3_1.jpg', 'path/to/tag_heuer_c3_2.jpg', 'path/to/tag_heuer_c3_3.jpg'),
+(2000, 'Orologio Luxury D4', 'Patek Philippe', 'Orologio di lusso con cassa in oro e cinturino in metallo.', 'Nuovo', 'path/to/patek_philippe_d4_1.jpg', 'path/to/patek_philippe_d4_2.jpg', 'path/to/patek_philippe_d4_3.jpg'),
+(800, 'Orologio Casual E5', 'Seiko', 'Orologio casual con design minimalista e cinturino in acciaio inox.', 'Nuovo', 'path/to/seiko_e5_1.jpg', 'path/to/seiko_e5_2.jpg', 'path/to/seiko_e5_3.jpg');
 
-INSERT INTO Ordine (data, prezzoTotale, nome, cognome, indirizzo)
-VALUES 
-('2024-12-07', 15000, 'Alessandro', 'Rossi', 'Via Firenze 12, Roma');
+
+INSERT INTO Ordine (data, prezzoTotale, nome, cognome, email, indirizzo, citta, user_id)
+VALUES
+('2024-12-01', 350, 'Mario', 'Rossi', 'mario.rossi@example.com', 'Via Roma, 10', 'Milano', 1),
+('2024-12-02', 180, 'Lucia', 'Bianchi', 'lucia.bianchi@example.com', 'Viale Europa, 5', 'Torino', 2),
+('2024-12-03', 120, 'Giovanni', 'Verdi', 'giovanni.verdi@example.com', 'Via Verdi, 20', 'Bologna', 3);
 
 
 INSERT INTO ContenutoOrdine (idOrdine, idProduct, quantita)
-VALUES 
-(1, 1, 1), -- Ordine #1, Prodotto Submariner, Quantità 1
-(1, 2, 1), -- Ordine #1, Prodotto Daytona, Quantità 1
-(2, 3, 2), -- Ordine #2, Prodotto Santos, Quantità 2
-(3, 4, 1), -- Ordine #3, Prodotto Nautilus, Quantità 1
-(4, 5, 1), -- Ordine #4, Prodotto Royal Oak, Quantità 1
-(4, 2, 2), -- Ordine #4, Prodotto Daytona, Quantità 2
-(5, 6, 2), -- Ordine #5, Prodotto Seamaster, Quantità 2
-(5, 1, 1); -- Ordine #5, Prodotto Submariner, Quantità 1
+VALUES
+(1, 1, 1),  -- Mario Rossi ha ordinato 1 Orologio Lux
+(2, 2, 2),  -- Lucia Bianchi ha ordinato 2 Borse Eleganti
+(3, 3, 1);  -- Giovanni Verdi ha ordinato 1 Paio di Scarpe Sportive

@@ -3,6 +3,7 @@
 define('__ROOT__', dirname(__FILE__));
 
 require_once (__ROOT__ . '/controller/ProductCustomerController.php');
+require_once (__ROOT__ . '/views/ThankyouView.php');
 
 session_start();
 
@@ -31,6 +32,11 @@ class Dispatcher
 
             case "/checkout":
                 ProductCustomerController::checkout();
+                break;
+
+            case "/thankyou_page":
+                $view = new ThankyouView();
+                $view->show();
                 break;
 
             default:

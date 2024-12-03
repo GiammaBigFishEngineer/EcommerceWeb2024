@@ -1,6 +1,7 @@
 <?php
 
 require_once(__ROOT__ . '/config/DB.php');
+require_once(__ROOT__ . '/utils/ClassUtils.php');
 
 
 class BaseModel
@@ -61,7 +62,7 @@ class BaseModel
         $this->_prepare();
         $updates = array();
         foreach ($this->_fields as $column) {
-        $updates[] = "$column=VALUES($column)";
+            $updates[] = "$column=VALUES($column)";
         }
         $updates_str = implode(',', $updates);
         $sql = "INSERT INTO " . static::$nome_tabella . " ($this->_columns) VALUES ($this->_bind_columns) ON DUPLICATE KEY UPDATE $updates_str";

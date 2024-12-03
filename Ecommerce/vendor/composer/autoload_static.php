@@ -29,6 +29,10 @@ class ComposerStaticInit8adeec90ee23fd1465417a6475737eea
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Asset\\' => 24,
         ),
+        'C' => 
+        array (
+            'CodeInc\\StripAccents\\' => 21,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -51,6 +55,10 @@ class ComposerStaticInit8adeec90ee23fd1465417a6475737eea
         'Symfony\\Component\\Asset\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/asset',
+        ),
+        'CodeInc\\StripAccents\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/codeinc/strip-accents/src',
         ),
     );
 

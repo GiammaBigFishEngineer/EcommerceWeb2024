@@ -9,7 +9,6 @@ class OrdineProductModel extends BaseModel
         "idOrdine",
         "idProduct",
         "quantita"
-        
     ];
    
 }

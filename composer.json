@@ -1,8 +1,5 @@
 {
     "require": {
-        "twig/twig": "^3.5",
-        "symfony/asset": "^7.2",
         "codeinc/strip-accents": "^1.1"
     }
-
 }

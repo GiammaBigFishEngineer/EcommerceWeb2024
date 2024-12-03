@@ -11,4 +11,5 @@ return array(
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Symfony\\Component\\Asset\\' => array($vendorDir . '/symfony/asset'),
+    'CodeInc\\StripAccents\\' => array($vendorDir . '/codeinc/strip-accents/src'),
 );

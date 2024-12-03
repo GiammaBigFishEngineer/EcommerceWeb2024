@@ -10,7 +10,12 @@ class OrdineModel extends BaseModel
         "id",
         "data",
         "prezzoTotale",
-        "indirizzo_id"
+        "nome",
+        "cognome",
+        "email",
+        "indirizzo",
+        "citta",
+        "user_id"
     ];
    
 }
