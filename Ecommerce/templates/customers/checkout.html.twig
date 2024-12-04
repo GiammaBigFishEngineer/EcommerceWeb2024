@@ -21,28 +21,28 @@
         <div class="row g-3">
         <div class="col-sm-6">
             <label for="firstName" class="form-label">Nome <span class="text-body-secondary">*</span></label>
-            <input type="text" class="form-control" name="nome" placeholder="" value="" required />
+            <input type="text" class="form-control" name="nome" value="{{session.nome}}" required />
         </div>
 
         <div class="col-sm-6">
             <label for="lastName" class="form-label">Cognome <span class="text-body-secondary">*</span></label>
-            <input type="text" class="form-control" name="cognome" placeholder="" value="" required />
+            <input type="text" class="form-control" name="cognome" value="{{session.cognome}}" required />
         </div>
 
         <div class="col-12">
             <label for="email" class="form-label">Email <span class="text-body-secondary">*</span></label>
-            <input type="email" class="form-control" name="email" placeholder="you@example.com" required/>
+            <input type="email" class="form-control" name="email" placeholder="you@example.com" value="{{session.email}}" required/>
         </div>
 
         <div class="col-12">
             <div class="row">
                 <div class="col-8">
                     <label for="address" class="form-label">Indirizzo <span class="text-body-secondary">*</span></label>
-                    <input type="text" class="form-control" name="indirizzo" placeholder="Via Turchetta 12" required />
+                    <input type="text" class="form-control" name="indirizzo" placeholder="Via Turchetta 12" value="{{session.indirizzo}}" required />
                 </div>
                 <div class="col-4">
                     <label for="address" class="form-label">Citt&agrave; <span class="text-body-secondary">*</span></label>
-                    <input type="text" class="form-control" name="citta" placeholder="Milano" required />
+                    <input type="text" class="form-control" name="citta" placeholder="Milano" value="{{session.citta}}" required />
                 </div>
             </div>
             

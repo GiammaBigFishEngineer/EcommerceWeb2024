@@ -1,6 +1,7 @@
 <?php
 
 require_once(__ROOT__ . '/vendor/autoload.php');
+require_once(__ROOT__ . '/utils/SessionUtils.php');
 
 class BaseView
 {
@@ -11,20 +12,14 @@ class BaseView
         $loader = new \Twig\Loader\FilesystemLoader('templates');
         $this->twig = new \Twig\Environment($loader);
 
-        if (isset($_SESSION)) $this->twig->addGlobal('session', $_SESSION);
-        $this->twig->addGlobal('get', $_GET);
-        $this->twig->addGlobal('post', $_POST);
+        $this->twig->addGlobal('isLogged', isLogged());
+        if (isset($_SESSION) && isLogged()) $this->twig->addGlobal('session', $_SESSION);
 
         // Registra la funzione "asset"
         $this->twig->addFunction(new \Twig\TwigFunction('asset', function ($path) {
             return '/templates/public/' . ltrim($path, '/');
         }));
+
     }
 
-    public function __destruct()
-    {
-        // clear the consumed sessions
-        if (session_status() === PHP_SESSION_ACTIVE)
-            $_SESSION = array();
-    }
 }
