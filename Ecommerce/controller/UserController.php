@@ -99,12 +99,15 @@ class UserController {
 
     public static function renderNotifiche() {
         $notifiche = array();
-        $user = UserModel::get($_SESSION["email"]);
-        if ($user != null) {
-            $notifiche = NotificheModel::where(array(
-                "user_id" => $user->id
-            ));
+        if (isset($_SESSION["email"])){
+            $user = UserModel::get($_SESSION["email"]);
+            if ($user != null) {
+                $notifiche = NotificheModel::where(array(
+                    "user_id" => $user->id
+                ));
+            }
         }
+        
         $view = new UserView();
         $view->renderNotifiche($notifiche);
     }

@@ -77,7 +77,6 @@ class ProductCustomerController {
                 echo $_SESSION["error"] = "Si è verificato un errore durante il salvataggio dell'ordine";
                 echo $err;
             }
-            
 
         }
 
