@@ -40,7 +40,7 @@ class UserModel extends BaseModel
         ]);
         $row = $sth->fetch();
 
-        return new static($row);
+        return  $row != null ? new static($row) : null;
     }
 
 }

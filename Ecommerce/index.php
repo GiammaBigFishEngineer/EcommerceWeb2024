@@ -25,18 +25,22 @@ class Dispatcher
         switch ($this->path) {
             
             case "/":
+                UserController::renderNotifiche();
                 ProductCustomerController::allProducts();
                 break;
 
             case "/prodotto":
+                UserController::renderNotifiche();
                 ProductCustomerController::showProduct($_GET["id"]);
                 break;
 
             case "/checkout":
+                UserController::renderNotifiche();
                 ProductCustomerController::checkout();
                 break;
 
             case "/thankyou_page":
+                UserController::renderNotifiche();
                 $view = new ThankyouView();
                 $view->show();
                 break;
@@ -46,10 +50,11 @@ class Dispatcher
                 break;
             
             case "/signup":
-
+                UserController::signup();
                 break;
 
             case "/area_privata":
+                UserController::renderNotifiche();
                 UserController::privateArea();
                 break;
             
