@@ -9,7 +9,7 @@ require_once(__ROOT__ . '/utils/ClassUtils.php');
  * Classe base per la gestione di modelli ORM.
  * Fornisce metodi per operazioni CRUD e gestione dinamica delle proprietà.
  */
-class BaseModel
+abstract class BaseModel
 {
     /**
      * @var array Associazione di campi e valori dell'entità.
