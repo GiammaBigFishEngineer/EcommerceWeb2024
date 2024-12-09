@@ -1,0 +1,86 @@
+<?php
+require_once(__ROOT__ . '/models/ProductModel.php');
+require_once(__ROOT__ . '/views/ProductView.php');
+require_once(__ROOT__ . '/models/OrdineModel.php');
+require_once(__ROOT__ . '/models/OrdineProductModel.php');
+require_once(__ROOT__ . '/views/CheckoutView.php');
+require_once(__ROOT__ . '/utils/CookieUtils.php');
+
+class ProductCustomerController {
+
+    /**
+     * Reinderizza tutti i prodotti filtrati per nome
+     */
+    public static function allProducts() {
+        $not_found_message = FALSE;
+        if (!isset($_GET['search'])){
+            $list = ProductModel::all();
+        } else {
+            $list = ProductModel::where(array('name' => $_GET['search']));
+            if (count($list) === 0) {
+                $not_found_message = TRUE;
+            }
+        }
+
+        $view = new ProductView();
+        $view->render($not_found_message, $list);
+    }
+
+    /**
+     * Reinderizza un solo prodotto passato per id
+     */
+    public static function showProduct($id) {
+        $product = ProductModel::get($id);
+
+        $view = new ProductView();
+        $view->show($product);
+    }
+
+    /**
+     * Effettua il salvataggio di un Ordine e dei prodotti ad esso associati
+     */
+    public static function checkout() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $ordine = new OrdineModel(array(
+                "id" => null,
+                "data" => date('Y-m-d'),
+                "prezzoTotale" => $_POST["prezzoTotale"],
+                "nome" =>  $_POST["nome"],
+                "cognome" => $_POST["cognome"],
+                "email" => $_POST["email"],
+                "indirizzo" => $_POST["indirizzo"],
+                "citta" => $_POST["citta"],
+                "user_id" =>  isset($_SESSION["email"]) ? UserModel::get($_SESSION["email"])->id : null
+            ));
+
+            try {
+                $idOrdine = $ordine->save();
+                $productDetails = getCartFromCookie();
+
+                foreach ($productDetails as $detail) {
+                    $pivot = new OrdineProductModel(array(
+                        "idOrdine" => $idOrdine,
+                        "idProduct" => $detail["id"],
+                        "quantita" => $detail["quantity"]
+                    ));
+                    try {
+                        $pivot->save();
+                    } catch (Exception $err) {
+                        echo $_SESSION["error"] = "Si è verificato un errore durante il salvataggio del pivot";
+                        echo $err;
+                    }
+                }
+                clearCartCookie();
+                header('Location: /thankyou_page');
+                
+            } catch (Exception $err) {
+                echo $_SESSION["error"] = "Si è verificato un errore durante il salvataggio dell'ordine";
+                echo $err;
+            }
+
+        }
+
+        $view = new CheckoutView();
+        $view->render();
+    }
+}

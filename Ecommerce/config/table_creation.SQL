@@ -6,7 +6,9 @@ CREATE TABLE User (
     password VARCHAR(255) NOT NULL,
     nome VARCHAR(100),
     cognome VARCHAR(100),
-    venditore BOOLEAN NOT NULL DEFAULT FALSE
+    venditore BOOLEAN NOT NULL DEFAULT FALSE,
+    indirizzo VARCHAR(255) NOT NULL,
+    citta VARCHAR(100) NOT NULL
 );
 
 -- Creazione tabella Notifiche
@@ -18,22 +20,11 @@ CREATE TABLE Notifiche (
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
 );
 
--- Creazione tabella Indirizzo
-CREATE TABLE Indirizzo (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    via VARCHAR(255) NOT NULL,
-    numero_civico INT NOT NULL,
-    citta VARCHAR(100) NOT NULL,
-    user_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
-    UNIQUE(user_id, via, numero_civico, citta) -- Chiave univoca
-);
-
 
 -- Creazione tabella Product
 CREATE TABLE Product (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    UnitCost INT NOT NULL,
+    unitCost INT NOT NULL,
     name VARCHAR(255) NOT NULL,
     marca VARCHAR(100),
     descrizione TEXT,
@@ -49,30 +40,13 @@ CREATE TABLE Ordine (
     data DATE NOT NULL,
     prezzoTotale INT NOT NULL,
     nome VARCHAR(100),        
-    cognome VARCHAR(100),     
-    indirizzo VARCHAR(255),   
+    cognome VARCHAR(100),
+    email VARCHAR(200),     
+    indirizzo VARCHAR(255),
+    citta VARCHAR(100),
     user_id INT NULL,         
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE SET NULL
 );
-
--- Creazione del trigger per la tabella Ordine
-DELIMITER $$
-
-CREATE TRIGGER trg_check_order BEFORE INSERT ON Ordine
-FOR EACH ROW
-BEGIN
-    -- Controllo: Se `user_id` è presente, `nome`, `cognome` e `indirizzo` devono essere NULL
-    IF NEW.user_id IS NOT NULL AND (NEW.nome IS NOT NULL OR NEW.cognome IS NOT NULL OR NEW.indirizzo IS NOT NULL) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Se user_id è presente, nome, cognome e indirizzo devono essere NULL';
-    END IF;
-
-    -- Controllo: Se `user_id` è NULL, `nome`, `cognome` e `indirizzo` devono essere NON NULL
-    IF NEW.user_id IS NULL AND (NEW.nome IS NULL OR NEW.cognome IS NULL OR NEW.indirizzo IS NULL) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Se user_id è NULL, nome, cognome e indirizzo devono essere NON NULL';
-    END IF;
-END$$
-
-DELIMITER ;
 
 
 -- Creazione tabella ContenutoOrdine
@@ -84,3 +58,43 @@ CREATE TABLE ContenutoOrdine (
     FOREIGN KEY (idOrdine) REFERENCES Ordine(id) ON DELETE CASCADE,
     FOREIGN KEY (idProduct) REFERENCES Product(id) ON DELETE CASCADE
 );
+
+--  password inserite:
+-- 'password123',
+-- 'securepassword',
+-- 'password456'
+INSERT INTO User (email, password, nome, cognome, venditore, indirizzo, citta)
+VALUES
+('mario.rossi@example.com', '$2y$10$o4BZR3vuwCR20.jle/8chuBVzRB63z2hwlVe8j/KkCHInwjOHiShy', 'Mario', 'Rossi', FALSE, 'Via Roma 10', 'Milano'),
+('lucia.bianchi@example.com', '$2y$10$tcjsxOGlEnJKiyBCg1rIau/akyNZUmQLMp3aHh6xNU3nck/tuAK7W', 'Lucia', 'Bianchi', TRUE, 'Viale Europa 5', 'Torino'),
+('giovanni.verdi@example.com', '$2y$10$EaV9bp/u6lZ8wIXDoMKMi.apeO4e/pDz6SdJkTWcunlGdXMRnq8iG', 'Giovanni', 'Verdi', FALSE, 'Via Verdi 20', 'Bologna');
+
+
+INSERT INTO Notifiche (testo, data, user_id)
+VALUES
+('Nuova notifica per te!', '2024-12-01', 1),
+('Il tuo ordine è stato spedito.', '2024-12-02', 2),
+('Promozione speciale in corso!', '2024-12-03', 3);
+
+
+INSERT INTO Product (unitCost, name, marca, descrizione, condizioni, imgPath1, imgPath2, imgPath3)
+VALUES
+(5000, 'Orologio Lusso A1', 'Rolex', 'Orologio da polso di lusso, edizione limitata, con movimento automatico.', 'Nuovo', 'path/to/rolex_a1_1.jpg', 'path/to/rolex_a1_2.jpg', 'path/to/rolex_a1_3.jpg'),
+(1200, 'Orologio Elegante B2', 'Omega', 'Orologio elegante con cinturino in pelle, quadrante con datario.', 'Nuovo', 'path/to/omega_b2_1.jpg', 'path/to/omega_b2_2.jpg', 'path/to/omega_b2_3.jpg'),
+(3500, 'Orologio Sportivo C3', 'Tag Heuer', 'Orologio sportivo con cronografo, resistenza all’acqua fino a 100 metri.', 'Nuovo', 'path/to/tag_heuer_c3_1.jpg', 'path/to/tag_heuer_c3_2.jpg', 'path/to/tag_heuer_c3_3.jpg'),
+(2000, 'Orologio Luxury D4', 'Patek Philippe', 'Orologio di lusso con cassa in oro e cinturino in metallo.', 'Nuovo', 'path/to/patek_philippe_d4_1.jpg', 'path/to/patek_philippe_d4_2.jpg', 'path/to/patek_philippe_d4_3.jpg'),
+(800, 'Orologio Casual E5', 'Seiko', 'Orologio casual con design minimalista e cinturino in acciaio inox.', 'Nuovo', 'path/to/seiko_e5_1.jpg', 'path/to/seiko_e5_2.jpg', 'path/to/seiko_e5_3.jpg');
+
+
+INSERT INTO Ordine (data, prezzoTotale, nome, cognome, email, indirizzo, citta, user_id)
+VALUES
+('2024-12-01', 350, 'Mario', 'Rossi', 'mario.rossi@example.com', 'Via Roma, 10', 'Milano', 1),
+('2024-12-02', 180, 'Lucia', 'Bianchi', 'lucia.bianchi@example.com', 'Viale Europa, 5', 'Torino', 2),
+('2024-12-03', 120, 'Giovanni', 'Verdi', 'giovanni.verdi@example.com', 'Via Verdi, 20', 'Bologna', 3);
+
+
+INSERT INTO ContenutoOrdine (idOrdine, idProduct, quantita)
+VALUES
+(1, 1, 1),  -- Mario Rossi ha ordinato 1 Orologio Lux
+(2, 2, 2),  -- Lucia Bianchi ha ordinato 2 Borse Eleganti
+(3, 3, 1);  -- Giovanni Verdi ha ordinato 1 Paio di Scarpe Sportive
