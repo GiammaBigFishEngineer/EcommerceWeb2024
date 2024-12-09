@@ -21,10 +21,11 @@ CREATE TABLE Notifiche (
 );
 
 
+
 -- Creazione tabella Product
 CREATE TABLE Product (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    unitCost INT NOT NULL,
+    UnitCost INT NOT NULL,
     name VARCHAR(255) NOT NULL,
     marca VARCHAR(100),
     descrizione TEXT,
