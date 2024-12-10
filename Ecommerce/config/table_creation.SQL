@@ -25,15 +25,18 @@ CREATE TABLE Notifiche (
 -- Creazione tabella Product
 CREATE TABLE Product (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    UnitCost INT NOT NULL,
+    unitCost INT NOT NULL,
     name VARCHAR(255) NOT NULL,
     marca VARCHAR(100),
     descrizione TEXT,
     condizioni VARCHAR(50),
     imgPath1 VARCHAR(255),
     imgPath2 VARCHAR(255),
-    imgPath3 VARCHAR(255)
+    imgPath3 VARCHAR(255),
+    vendor_id INT NOT NULL,
+    FOREIGN KEY (vendor_id) REFERENCES User(id) ON DELETE CASCADE
 );
+
 
 -- Creazione tabella Ordine
 CREATE TABLE Ordine (
@@ -78,13 +81,13 @@ VALUES
 ('Promozione speciale in corso!', '2024-12-03', 3);
 
 
-INSERT INTO Product (unitCost, name, marca, descrizione, condizioni, imgPath1, imgPath2, imgPath3)
+INSERT INTO Product (unitCost, name, marca, descrizione, condizioni, imgPath1, imgPath2, imgPath3,vendor_id)
 VALUES
-(5000, 'Orologio Lusso A1', 'Rolex', 'Orologio da polso di lusso, edizione limitata, con movimento automatico.', 'Nuovo', 'path/to/rolex_a1_1.jpg', 'path/to/rolex_a1_2.jpg', 'path/to/rolex_a1_3.jpg'),
-(1200, 'Orologio Elegante B2', 'Omega', 'Orologio elegante con cinturino in pelle, quadrante con datario.', 'Nuovo', 'path/to/omega_b2_1.jpg', 'path/to/omega_b2_2.jpg', 'path/to/omega_b2_3.jpg'),
-(3500, 'Orologio Sportivo C3', 'Tag Heuer', 'Orologio sportivo con cronografo, resistenza all’acqua fino a 100 metri.', 'Nuovo', 'path/to/tag_heuer_c3_1.jpg', 'path/to/tag_heuer_c3_2.jpg', 'path/to/tag_heuer_c3_3.jpg'),
-(2000, 'Orologio Luxury D4', 'Patek Philippe', 'Orologio di lusso con cassa in oro e cinturino in metallo.', 'Nuovo', 'path/to/patek_philippe_d4_1.jpg', 'path/to/patek_philippe_d4_2.jpg', 'path/to/patek_philippe_d4_3.jpg'),
-(800, 'Orologio Casual E5', 'Seiko', 'Orologio casual con design minimalista e cinturino in acciaio inox.', 'Nuovo', 'path/to/seiko_e5_1.jpg', 'path/to/seiko_e5_2.jpg', 'path/to/seiko_e5_3.jpg');
+(5000, 'Orologio Lusso A1', 'Rolex', 'Orologio da polso di lusso, edizione limitata, con movimento automatico.', 'Nuovo', 'path/to/rolex_a1_1.jpg', 'path/to/rolex_a1_2.jpg', 'path/to/rolex_a1_3.jpg',2),
+(1200, 'Orologio Elegante B2', 'Omega', 'Orologio elegante con cinturino in pelle, quadrante con datario.', 'Nuovo', 'path/to/omega_b2_1.jpg', 'path/to/omega_b2_2.jpg', 'path/to/omega_b2_3.jpg',2),
+(3500, 'Orologio Sportivo C3', 'Tag Heuer', 'Orologio sportivo con cronografo, resistenza all’acqua fino a 100 metri.', 'Nuovo', 'path/to/tag_heuer_c3_1.jpg', 'path/to/tag_heuer_c3_2.jpg', 'path/to/tag_heuer_c3_3.jpg',2),
+(2000, 'Orologio Luxury D4', 'Patek Philippe', 'Orologio di lusso con cassa in oro e cinturino in metallo.', 'Nuovo', 'path/to/patek_philippe_d4_1.jpg', 'path/to/patek_philippe_d4_2.jpg', 'path/to/patek_philippe_d4_3.jpg',2),
+(800, 'Orologio Casual E5', 'Seiko', 'Orologio casual con design minimalista e cinturino in acciaio inox.', 'Nuovo', 'path/to/seiko_e5_1.jpg', 'path/to/seiko_e5_2.jpg', 'path/to/seiko_e5_3.jpg',2);
 
 
 INSERT INTO Ordine (data, prezzoTotale, nome, cognome, email, indirizzo, citta, user_id)

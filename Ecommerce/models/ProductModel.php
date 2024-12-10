@@ -14,7 +14,8 @@ class ProductModel extends BaseModel
         "condizioni",
         "imgPath1",
         "imgPath2",
-        "imgPath3"
+        "imgPath3",
+        "vendor_id"
     ];
    
 }
