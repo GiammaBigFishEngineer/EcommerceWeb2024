@@ -17,5 +17,14 @@ class ProductModel extends BaseModel
         "imgPath3",
         "vendor_id"
     ];
+    
+    public static function getVendorOrder($vendor_id)
+    {
+        $query = "SELECT O.nome, O.cognome, O.indirizzo, O.citta,  FROM Product P, Ordine O, ContenutoOrdine PO WHERE vendor_id = :vendor_id";
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->bindParam(':vendor_id', $vendor_id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
    
 }

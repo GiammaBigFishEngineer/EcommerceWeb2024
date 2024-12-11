@@ -48,7 +48,8 @@ CREATE TABLE Ordine (
     email VARCHAR(200),     
     indirizzo VARCHAR(255),
     citta VARCHAR(100),
-    user_id INT NULL,         
+    user_id INT NULL,
+    codiceOrdine VARCHAR(10) UNIQUE,        
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE SET NULL
 );
 
@@ -90,11 +91,11 @@ VALUES
 (800, 'Orologio Casual E5', 'Seiko', 'Orologio casual con design minimalista e cinturino in acciaio inox.', 'Nuovo', 'path/to/seiko_e5_1.jpg', 'path/to/seiko_e5_2.jpg', 'path/to/seiko_e5_3.jpg',2);
 
 
-INSERT INTO Ordine (data, prezzoTotale, nome, cognome, email, indirizzo, citta, user_id)
+INSERT INTO Ordine (data, prezzoTotale, nome, cognome, email, indirizzo, citta, user_id, codiceOrdine)
 VALUES
-('2024-12-01', 350, 'Mario', 'Rossi', 'mario.rossi@example.com', 'Via Roma, 10', 'Milano', 1),
-('2024-12-02', 180, 'Lucia', 'Bianchi', 'lucia.bianchi@example.com', 'Viale Europa, 5', 'Torino', 2),
-('2024-12-03', 120, 'Giovanni', 'Verdi', 'giovanni.verdi@example.com', 'Via Verdi, 20', 'Bologna', 3);
+('2024-12-01', 350, 'Mario', 'Rossi', 'mario.rossi@example.com', 'Via Roma, 10', 'Milano', 1, 'ORD001'),
+('2024-12-02', 180, 'Lucia', 'Bianchi', 'lucia.bianchi@example.com', 'Viale Europa, 5', 'Torino', 2, 'ORD002'),
+('2024-12-03', 120, 'Giovanni', 'Verdi', 'giovanni.verdi@example.com', 'Via Verdi, 20', 'Bologna', 3, 'ORD003');
 
 
 INSERT INTO ContenutoOrdine (idOrdine, idProduct, quantita)

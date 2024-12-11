@@ -50,7 +50,8 @@ class ProductCustomerController {
                 "email" => $_POST["email"],
                 "indirizzo" => $_POST["indirizzo"],
                 "citta" => $_POST["citta"],
-                "user_id" =>  isset($_SESSION["email"]) ? UserModel::get($_SESSION["email"])->id : null
+                "user_id" =>  isset($_SESSION["email"]) ? UserModel::get($_SESSION["email"])->id : null,
+                "codiceOrdine" => OrdineModel::generateOrderCode()
             ));
 
             try {

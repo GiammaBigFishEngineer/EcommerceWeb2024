@@ -15,7 +15,8 @@ class OrdineModel extends BaseModel
         "email",
         "indirizzo",
         "citta",
-        "user_id"
+        "user_id",
+        "codiceOrdine"
     ];
 
     /** @var ProductModel[] */
@@ -29,6 +30,23 @@ class OrdineModel extends BaseModel
         ]);
         $rows = $sth->fetchAll();
         $this->productsAssociated = $rows;
+    }
+
+    /**
+     * Genera un codice univoco per l'ordine finchè il generato non è presente su DB
+     */
+    public static function generateOrderCode() {
+        $codiceOrdine = substr(str_shuffle(str_repeat("0123456789ABCDEFGHIJKLMNOPQRSTUWXYZ", 5)), 0, 5);
+        while(true) {
+            $query = "SELECT * FROM " . static::$nome_tabella . " WHERE codiceOrdine = :codiceOrdine";
+            $stmt = DB::get()->prepare($query);
+            $stmt->bindParam(':codiceOrdine', $codiceOrdine);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (count($result) === 0) {
+                return $codiceOrdine;
+            }
+        }
     }
 
 }
