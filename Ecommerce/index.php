@@ -6,9 +6,12 @@ require_once (__ROOT__ . '/controller/ProductCustomerController.php');
 require_once (__ROOT__ . '/controller/UserController.php');
 require_once (__ROOT__ . '/views/ThankyouView.php');
 require_once (__ROOT__ . '/utils/CookieUtils.php');
+require_once (__ROOT__ . '/controller/OrderVendorController.php');
+require_once (__ROOT__ . '/controller/ProductVendorController.php');
 
 
 session_start();
+
 class Dispatcher
 {
     private $method;
@@ -64,6 +67,23 @@ class Dispatcher
                 header('Location: /');
                 break;
             
+            case "/vendorOrdini":
+                UserController::renderNotifiche();
+                OrderVendorController::listOrders();
+                break;
+            
+
+            case "/vendorProducts":
+                UserController::renderNotifiche();
+                ProductVendorController::listProducts();
+                break;
+
+            case "/productForm":
+                UserController::renderNotifiche();
+                ProductVendorController::createProduct();
+
+                break;
+
             default:
                 echo "404 HTML<br>";
                 echo $this->path;

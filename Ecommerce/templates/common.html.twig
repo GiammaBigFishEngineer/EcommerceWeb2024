@@ -40,9 +40,19 @@
                 <a class="nav-link active" aria-current="page" href="/logout">Esci</a>
               </li>
               {% endif %}
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Area Venditore</a>
+
+              {% if session.venditore %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Area Venditore
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/vendorOrdini">Ordini Ricevuti</a></li>
+                  <li><a class="dropdown-item" href="/productForm">Inserimento/Modifica Prodotti</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                </ul>
               </li>
+              {% endif %}
             </ul>
           </div>
             <a class="btn" aria-current="page" data-bs-toggle="modal" data-bs-target="#notificationModal">
