@@ -3,105 +3,113 @@
 {% block content %}
 
 <div class="container mt-4">
-      <div class="row">
-        <!-- Listino Prodotti -->
-        <div class="col-lg-6">
-          <h1 class="text-center">Listino Prodotti</h1>
-          <input type="text" class="form-control mb-3" placeholder="Cerca prodotto">
-          <div class="table-container">
-            <table class="table table-dark table-striped">
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>Codice</th>
-                  <th>Marca</th>
-                  <th>Condizioni</th>
-                  <th>Prezzo (€)</th>
-                </tr>
-              </thead>
-              <tbody>
-              {% for product in products %}
-                
-                <tr>
-                <td>{{product.name}}</td>
-                <td>{{product.id}}</td>
-                <td>{{product.marca}}</td>
-                <td>{{product.condizioni}}</td>
-                <td>{{product.unitCost}}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Form Inserimento e Modifica -->
-        <div class="col-lg-6">
-          <div class="row">
-            <!-- Inserimento Nuovo Prodotto -->
-            <div class="col-lg-12 mb-4">
-              <h2>Inserimento Nuovo Prodotto</h2>
-              <div class="table-container">
-                <form>
-                  <div class="mb-3">
-                    <label for="productName" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="productName">
-                  </div>
-                  <div class="mb-3">
-                    <label for="productBrand" class="form-label">Marca</label>
-                    <input type="text" class="form-control" id="productBrand">
-                  </div>
-                  <div class="mb-3">
-                    <label for="productCode" class="form-label">Codice</label>
-                    <input type="text" class="form-control" id="productCode">
-                  </div>
-                  <div class="mb-3">
-                    <label for="productQuantity" class="form-label">Quantità</label>
-                    <input type="number" class="form-control" id="productQuantity">
-                  </div>
-                  <div class="mb-3">
-                    <label for="productCondition" class="form-label">Condizioni</label>
-                    <input type="text" class="form-control" id="productCondition">
-                  </div>
-                  <div class="mb-3">
-                    <label for="floatingTextarea" class="form-label">Descrizione</label>
-                    <textarea class="form-control" placeholder="Descrizione prodotto" id="floatingTextarea"></textarea>
-
-                  </div>
-                  <div class="mb-3">
-                    <label for="productPrice" class="form-label">Prezzo (€)</label>
-                    <input type="text" class="form-control" id="productPrice">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Inserisci Prodotto</button>
-                </form>
-              </div>
-            </div>
-
-            <!-- Modifica Prodotto -->
-            <div class="col-lg-12">
-              <h2>Modifica Dati Prodotto</h2>
-              <div class="table-container">
-                <form>
-                  <div class="mb-3">
-                    <label for="modifyProductCode" class="form-label">Codice Prodotto</label>
-                    <input type="text" class="form-control" id="modifyProductCode">
-                  </div>
-                  <div class="mb-3">
-                    <label for="modifyQuantity" class="form-label">Modifica Quantità</label>
-                    <input type="number" class="form-control" id="modifyQuantity">
-                  </div>
-                  <div class="mb-3">
-                    <label for="modifyPrice" class="form-label">Modifica Prezzo (€)</label>
-                    <input type="text" class="form-control" id="modifyPrice">
-                  </div>
-                  <button type="submit" class="btn btn-secondary">Conferma Modifiche</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="row">
+    <!-- Listino Prodotti -->
+    <div class="col-lg-6">
+      <h1 class="text-center">Listino Prodotti</h1>
+      <input type="text" id="searchBar" class="form-control mb-3" placeholder="Cerca prodotto">
+      <div class="table-container">
+        <table class="table table-dark table-striped" id="productTable">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Codice</th>
+              <th>Marca</th>
+              <th>Condizioni</th>
+              <th>Prezzo (€)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in products %}
+            <tr class="product-row">
+              <td>{{ product.name }}</td>
+              <td>{{ product.id }}</td>
+              <td>{{ product.marca }}</td>
+              <td>{{ product.condizioni }}</td>
+              <td>{{ product.unitCost }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
     </div>
 
+    <!-- Form Inserimento e Modifica -->
+    <div class="col-lg-6">
+      <!-- Inserimento Nuovo Prodotto -->
+      <h2>Inserimento Nuovo Prodotto</h2>
+      <form method="POST" action="/vendor/products/create">
+        <div class="mb-3">
+          <label for="productName" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="productName" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="productBrand" class="form-label">Marca</label>
+          <input type="text" class="form-control" id="productBrand" name="marca" required>
+        </div>
+        <div class="mb-3">
+          <label for="productQuantity" class="form-label">Quantità</label>
+          <input type="number" class="form-control" id="productQuantity" name="quantita" required>
+        </div>
+        <div class="mb-3">
+          <label for="productCondition" class="form-label">Condizioni</label>
+          <input type="text" class="form-control" id="productCondition" name="condizioni" required>
+        </div>
+        <div class="mb-3">
+          <label for="productPrice" class="form-label">Prezzo (€)</label>
+          <input type="text" class="form-control" id="productPrice" name="unitCost" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Inserisci Prodotto</button>
+      </form>
+
+      <!-- Modifica Prodotto -->
+      <h2 class="mt-5">Modifica Dati Prodotto</h2>
+      <form>
+        <div class="mb-3">
+          <label for="modifyProductCode" class="form-label">Codice Prodotto</label>
+          <input type="text" class="form-control" id="modifyProductCode" name="id" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="modifyQuantity" class="form-label">Modifica Quantità</label>
+          <input type="number" class="form-control" id="modifyQuantity" name="quantita">
+        </div>
+        <div class="mb-3">
+          <label for="modifyPrice" class="form-label">Modifica Prezzo (€)</label>
+          <input type="text" class="form-control" id="modifyPrice" name="unitCost">
+        </div>
+        <button type="button" class="btn btn-secondary" disabled>Conferma Modifiche</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Evidenziazione dei prodotti in base alla barra di ricerca
+
+  document.getElementById("searchBar").addEventListener("input", () => {
+    const searchValue = document.getElementById("searchBar").value.toLowerCase();
+
+    document.querySelectorAll(".product-row").forEach(row => {
+      const productName = row.getElementsByTagName("td")[0].innerText.toLowerCase();
+
+      // Rimuove sempre la classe, poi la riaggiunge se necessario
+      row.classList.remove("table-primary");
+
+      if (searchValue && productName.includes(searchValue)) {
+        row.classList.add("table-primary"); // Evidenzia solo le righe corrispondenti
+      }
+    });
+  });
+
+  // Popola il form di modifica con i dati della riga cliccata
+  document.querySelectorAll(".product-row").forEach(row => {
+    row.addEventListener("click", () => {
+      const cells = row.getElementsByTagName("td");
+      document.getElementById("modifyProductCode").value = cells[1].innerText; // Codice prodotto
+      document.getElementById("modifyQuantity").value = 1; // Quantità predefinita
+      document.getElementById("modifyPrice").value = cells[4].innerText; // Prezzo
+    });
+  });
+</script>
 
 {% endblock content %}

@@ -217,12 +217,20 @@ abstract class BaseModel
      */
     public static function get(int $id)
     {
+        if ($id <= 0) {
+            throw new InvalidArgumentException("L'ID fornito non è valido.");
+        }
+
         $query = "SELECT * FROM " . static::$nome_tabella  . " WHERE id=:id";
         $sth = DB::get()->prepare($query);
         $sth->execute([
             'id' => $id,
         ]);
         $row = $sth->fetch();
+
+        if (!$row) {
+            throw new Exception("Record non trovato per l'ID: $id");
+        }
 
         return new static($row);
     }

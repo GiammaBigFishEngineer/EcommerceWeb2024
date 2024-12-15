@@ -35,7 +35,20 @@ class ProductVendorController
     // Modifica un prodotto esistente
     public static function editProduct($productId)
 {
-    $product = ProductModel::get($productId);
+    print_r($_POST); // Debug input POST
+    exit;
+
+    if (empty($productId) || !is_numeric($productId)) {
+        echo "Errore: ID Prodotto non valido!";
+        exit;
+    }
+
+    $product = ProductModel::get((int)$productId);
+
+    if (!$product) {
+        echo "Errore: Prodotto non trovato!";
+        exit;
+    }
 
     if ( isset($_SESSION['email']) && $product->vendor_id !== UserModel::get($_SESSION['email'])->id) {
         header('Location: /vendor/products');

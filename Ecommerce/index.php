@@ -81,6 +81,13 @@ class Dispatcher
             case "/productForm":
                 UserController::renderNotifiche();
                 ProductVendorController::createProduct();
+                //ProductVendorController::editProduct($_GET["id"]);
+                //ProductVendorController::deleteProduct($_GET["id"]);
+                break;
+
+            case "/ListinoProdotti":
+                UserController::renderNotifiche();
+                ProductVendorController::listProducts();
 
                 break;
 
@@ -94,3 +101,4 @@ class Dispatcher
 
 $dispatcher = new Dispatcher();
 $dispatcher->dispatch();
+
