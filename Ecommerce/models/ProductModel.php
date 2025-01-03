@@ -31,4 +31,33 @@ class ProductModel extends BaseModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
    
+    public static function filterProducts($filters) {
+        // Inizializza la query base
+        $query = "SELECT * FROM " . static::$nome_tabella . " WHERE 1=1";
+        $params = [];
+
+        // Itera sui filtri per costruire la query dinamica
+        foreach ($filters as $key => $value) {
+            if (in_array($key, ['name', 'marca', 'condizioni'])) {
+                // Filtri per campi testuali (LIKE)
+                $query .= " AND $key LIKE :$key";
+                $params[$key] = "%$value%";
+            } elseif ($key === 'unitCostMin') {
+                // Filtro per valore minimo
+                $query .= " AND unitCost >= :unitCostMin";
+                $params['unitCostMin'] = $value;
+            } elseif ($key === 'unitCostMax') {
+                // Filtro per valore massimo
+                $query .= " AND unitCost <= :unitCostMax";
+                $params['unitCostMax'] = $value;
+            }
+        }
+
+        // Prepara e esegui la query
+        $stmt = DB::get()->prepare($query);
+        $stmt->execute($params);
+
+        // Restituisci i risultati
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

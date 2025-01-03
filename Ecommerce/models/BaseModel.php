@@ -260,4 +260,12 @@ abstract class BaseModel
     {
         return true;
     }
+
+    /**
+     * Metodo per accedere al campo _fields
+     *  */ 
+    public function getFields(): array
+    {
+        return $this->_fields;
+    }
 }

@@ -31,6 +31,10 @@ class Dispatcher
                 UserController::renderNotifiche();
                 ProductCustomerController::allProducts();
                 break;
+            
+            case "/catalogo_prodotti":
+                ProductCustomerController::renderFilteredProducts();
+                break;
 
             case "/prodotto":
                 UserController::renderNotifiche();

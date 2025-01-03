@@ -84,4 +84,37 @@ class ProductCustomerController {
         $view = new CheckoutView();
         $view->render();
     }
+
+    /**
+     * Reinderizza i prodotti in base ai filtri
+     */
+    public static function renderFilteredProducts() {
+        $not_found_message = FALSE;
+        if (empty($_GET)){
+            $list = ProductModel::all();
+        } else {
+            $product = new ProductModel();
+            $expectedParams = $product->getFields();
+            $expectedParams[] = "unitCostMin";
+            $expectedParams[] = "unitCostMax";
+
+            // Array per salvare i filtri
+            $filters = array();
+
+            // Itera sui parametri attesi
+            foreach ($expectedParams as $param) {
+                if (isset($_GET[$param]) && !empty($_GET[$param])) {
+                    // Aggiungi il parametro all'array dei filtri
+                    $filters[$param] = $_GET[$param];
+                }
+            }
+            $list = ProductModel::filterProducts($filters);
+            if (count($list) === 0) {
+                $not_found_message = TRUE;
+            }
+        }
+
+        $view = new ProductView();
+        $view->renderFilteredProducts($not_found_message, $list);
+    }
 }
