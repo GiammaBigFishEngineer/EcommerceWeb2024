@@ -47,8 +47,9 @@
                 </svg>
             </a>
             <form class="d-flex mx-auto" role="search">
-                <input class="form-control me-2" type="search" placeholder="Cerca prodotto" aria-label="Search">
-                <button class="btn btn-primary" type="submit">Cerca</button>
+              <label class="d-none" for="searchProduct">Ricerca Prodotto</label>
+              <input class="form-control me-2" type="search" placeholder="Cerca prodotto" aria-label="Search" id="searchProduct">
+              <button class="btn btn-primary" type="submit">Cerca</button>
             </form>
         </div>
       </nav>
@@ -58,7 +59,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content bg-dark">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="notificationModalLabel">Le tue notifiche</h1>
+              <p class="modal-title fs-5" id="notificationModalLabel">Le tue notifiche</p>
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -143,7 +144,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content bg-dark">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="cartModalLabel">Il tuo carrello</h1>
+              <p class="modal-title fs-5" id="cartModalLabel">Il tuo carrello</p>
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div id="products-list" class="modal-body">
@@ -165,9 +166,9 @@
     <!--START main-->
     <div class="main">
       <div class="welcome">
-        <h1 class="text-light text-center" style="padding: 250px 0; font-size: 100px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+        <h4 class="text-light text-center" style="padding: 250px 0; font-size: 100px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
           Scegli il tuo orologio
-        </h1>
+        </h4>
       </div>
       <div class="container mt-5">
         <!--START banner section-->

@@ -68,6 +68,7 @@ export function createProductElement(cart, product) {
         console.log("Elemento rimosso");
         const valueShowed = document.getElementById(`quantityShowed${product.id}`);
         valueShowed.textContent = `Pz: ${product.quantity} `;
+        if (!cart.isProductInCart(product.id)) valueShowed.textContent = `Pz: 0 `;
         CookieUtils.saveCartToCookie(cart);
     });
 

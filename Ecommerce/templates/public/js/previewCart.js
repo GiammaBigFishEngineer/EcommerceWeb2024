@@ -8,7 +8,6 @@ const products = loadedCart.getProducts();
 
 
 products.forEach(p => {
-    // Seleziona un contenitore dove inserire il prodotto (ad esempio un div con id="products-list")
     const productsList = document.getElementById("products-list");
     // Aggiungi il prodotto dinamicamente alla lista
     const productElement = createProductElement(loadedCart, p);

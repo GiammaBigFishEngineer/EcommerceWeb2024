@@ -47,7 +47,8 @@
                 </svg>
             </a>
             <form class="d-flex mx-auto" role="search">
-                <input class="form-control me-2" type="search" placeholder="Cerca prodotto" aria-label="Search">
+                <label class="d-none" for="searchProduct">Ricerca Prodotto</label>
+                <input class="form-control me-2" type="search" placeholder="Cerca prodotto" aria-label="Search" id="searchProduct">
                 <button class="btn btn-outline-primary" type="submit">Cerca</button>
             </form>
         </div>
@@ -58,7 +59,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content bg-dark">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="notificationModalLabel">Le tue notifiche</h1>
+              <p class="modal-title fs-5" id="notificationModalLabel">Le tue notifiche</p>
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -135,7 +136,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content bg-dark">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="cartModalLabel">Il tuo carrello</h1>
+              <p class="modal-title fs-5" id="cartModalLabel">Il tuo carrello</p>
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div id="products-list" class="modal-body">
@@ -182,7 +183,7 @@
                   </div>
             </div>
             <div class="col-md-8 py-5 px-5">
-                <h2>Titolo</h2>
+                <h5>Titolo</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at neque nisl. In faucibus sapien vitae nisl laoreet finibus. 
                     Donec id placerat ante. Praesent porttitor dui quis nibh volutpat, quis euismod lacus egestas. Phasellus nec dignissim neque, 
                     nec sodales arcu. Nunc blandit enim non erat pretium ornare. Cras condimentum at nisi ac tincidunt. 

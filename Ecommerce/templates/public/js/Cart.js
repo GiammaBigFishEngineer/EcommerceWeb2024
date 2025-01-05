@@ -119,5 +119,14 @@ export class Cart {
     getProducts(){
         return this.products;
     }
+
+    /**
+     * Controlla se un prodotto con l'ID specificato è presente nel carrello
+     * @param {number|string} productId - L'ID del prodotto da cercare
+     * @returns {boolean} - Ritorna true se il prodotto è nel carrello, altrimenti false
+     */
+    isProductInCart(productId) {
+        return this.products.some(product => product.id === productId);
+    }
     
 }
