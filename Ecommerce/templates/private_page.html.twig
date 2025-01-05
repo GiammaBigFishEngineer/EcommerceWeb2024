@@ -7,12 +7,7 @@
             {% for ordine in ordini %}
             <div class="row bg-light text-dark p-2 rounded mt-3">
                 <div class="col-4">
-                    <p>{{ordine.indirizzo}} {{ordine.citta}}
-                        <hr> 
-                        Effettuato il <br> {{ordine.data}}
-                        <hr>
-                        <span class="text-success">{{ordine.prezzoTotale}}€</span>
-                    </p>
+                {{ordine.indirizzo}} {{ordine.citta}} <hr> Effettuato il <br> {{ordine.data}} <hr> <span class="text-success">{{ordine.prezzoTotale}}€</span>
                 </div>
                 <div class="col-8">
                     <ul class="list-group">
