@@ -16,6 +16,7 @@ class BaseView
         if (isset($_SESSION) && isLogged()) $this->twig->addGlobal('session', $_SESSION);
 
         $this->twig->addGlobal('GET', $_GET);
+        $this->twig->addGlobal('pageTitlte', $_SESSION["pageTitlte"]);
 
         // Registra la funzione "asset"
         $this->twig->addFunction(new \Twig\TwigFunction('asset', function ($path) {

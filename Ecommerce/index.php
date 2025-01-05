@@ -11,7 +11,6 @@ require_once (__ROOT__ . '/controller/ProductVendorController.php');
 
 
 session_start();
-
 class Dispatcher
 {
     private $method;
@@ -30,39 +29,47 @@ class Dispatcher
             case "/":
                 UserController::renderNotifiche();
                 ProductCustomerController::allProducts();
+                $_SESSION["pageTitlte"] = "Eterna Eleganza";
                 break;
             
             case "/catalogo_prodotti":
                 ProductCustomerController::renderFilteredProducts();
+                $_SESSION["pageTitlte"] = "Catalogo Prodotti";
                 break;
 
             case "/prodotto":
                 UserController::renderNotifiche();
                 ProductCustomerController::showProduct($_GET["id"]);
+                $_SESSION["pageTitlte"] = "Info Prodotto";
                 break;
 
             case "/checkout":
                 UserController::renderNotifiche();
                 ProductCustomerController::checkout();
+                $_SESSION["pageTitlte"] = "Pagina Pagamento";
                 break;
 
             case "/thankyou_page":
                 UserController::renderNotifiche();
                 $view = new ThankyouView();
                 $view->show();
+                $_SESSION["pageTitlte"] = "Grazie di averci scelto";
                 break;
 
             case "/login":
                 UserController::login();
+                $_SESSION["pageTitlte"] = "Eterna Eleganza Login";
                 break;
             
             case "/signup":
                 UserController::signup();
+                $_SESSION["pageTitlte"] = "Eterna Eleganza Registrati";
                 break;
 
             case "/area_privata":
                 UserController::renderNotifiche();
                 UserController::privateArea();
+                $_SESSION["pageTitlte"] = "Eterna Eleganza Area Privata";
                 break;
             
             case "/logout":
@@ -74,12 +81,14 @@ class Dispatcher
             case "/vendorOrdini":
                 UserController::renderNotifiche();
                 OrderVendorController::listOrders();
+                $_SESSION["pageTitlte"] = "Ordini Venditore";
                 break;
             
 
             case "/vendorProducts":
                 UserController::renderNotifiche();
                 ProductVendorController::listProducts();
+                $_SESSION["pageTitlte"] = "Prodotti Venditore";
                 break;
 
             case "/productForm":
