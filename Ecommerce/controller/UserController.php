@@ -69,6 +69,15 @@ class UserController {
             ));
             try {
                 $id = $user->save();
+                $notification = new NotificheModel(array(
+                    "id" => 0,
+                    "testo" => "Benvenuto in Eterna Eleganza!",
+                    "data" => date("Y-m-d"),
+                    "user_id" => $id,
+                    "letta" => 0
+                ));
+                $notification->save();
+
                 header("Location: /login");
             } catch (Exception $err) {
                 echo $err;
@@ -110,5 +119,33 @@ class UserController {
         
         $view = new UserView();
         $view->renderNotifiche($notifiche);
+    }
+
+    public static function signReadNotifica() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Ottieni i dati dalla richiesta
+            $input = json_decode(file_get_contents('php://input'), true);
+        
+            if (isset($input['id']) && isset($input['letta'])) {
+                $id = $input['id'];
+                $letta = $input['letta'];
+        
+                $notifica = NotificheModel::get($id);
+                $notifica->letta = $letta;
+                try {
+                    $id = $notifica->save();
+                } catch (Exception $err) {
+                    echo $err;
+                }
+                // Rispondi con successo
+                echo json_encode(['success' => true, 'id' => $id]);
+                exit;
+            }
+        
+            // Rispondi con errore
+            http_response_code(400);
+            echo json_encode(['success' => false, 'message' => 'Dati non validi']);
+            exit;
+        }
     }
 }

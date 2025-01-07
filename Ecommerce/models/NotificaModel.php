@@ -9,7 +9,8 @@ class NotificheModel extends BaseModel
         "id",
         "testo",
         "data",
-        "user_id"
+        "user_id",
+        "letta"
     ];
    
 }

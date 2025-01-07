@@ -8,7 +8,7 @@ class OrderVendorController
     // Lista ordini per venditore
     public static function listOrders()
     {
-        if($_SESSION['venditore'] === false) {
+        if(!isset($_SESSION['venditore']) || $_SESSION['venditore'] === false) {
             header('Location: /');
             exit;
         }

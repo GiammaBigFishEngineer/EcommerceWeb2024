@@ -22,7 +22,7 @@ class ProductModel extends BaseModel
     {
         $query = "SELECT O.nome, O.cognome, O.indirizzo, O.citta, O.codiceOrdine,
          P.name AS nomeProdotto, PO.quantita, (P.unitCost * PO.quantita) AS totaleCosto
-          FROM Product P, Ordine O, ContenutoOrdine PO 
+          FROM " . static::$nome_tabella . " P, " . OrdineModel::$nome_tabella . " O, " . OrdineProductModel::$nome_tabella . " PO 
           WHERE P.vendor_id = :vendor_id
           AND O.id = PO.idOrdine AND P.id = PO.idProduct";
         $stmt = DB::get()->prepare($query);

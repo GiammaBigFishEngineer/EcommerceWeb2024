@@ -17,6 +17,7 @@ CREATE TABLE Notifiche (
     testo TEXT NOT NULL,
     data DATE NOT NULL,
     user_id INT,
+    letta BOOLEAN NOT NULL DEFAULT FALSE,
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
 );
 
@@ -75,21 +76,20 @@ VALUES
 ('giovanni.verdi@example.com', '$2y$10$EaV9bp/u6lZ8wIXDoMKMi.apeO4e/pDz6SdJkTWcunlGdXMRnq8iG', 'Giovanni', 'Verdi', FALSE, 'Via Verdi 20', 'Bologna');
 
 
-INSERT INTO Notifiche (testo, data, user_id)
+INSERT INTO Notifiche (testo, data, user_id, letta)
 VALUES
-('Nuova notifica per te!', '2024-12-01', 1),
-('Il tuo ordine è stato spedito.', '2024-12-02', 2),
-('Promozione speciale in corso!', '2024-12-03', 3);
+('Nuova notifica per te!', '2024-12-01', 1, FALSE),
+('Il tuo ordine è stato spedito.', '2024-12-02', 2, FALSE),
+('Promozione speciale in corso!', '2024-12-03', 3, FALSE);
 
 
-INSERT INTO Product (unitCost, name, marca, descrizione, condizioni, imgPath1, imgPath2, imgPath3,vendor_id)
+INSERT INTO Product (unitCost, name, marca, descrizione, condizioni, imgPath1, imgPath2, imgPath3, vendor_id)
 VALUES
-(5000, 'Orologio Lusso A1', 'Rolex', 'Orologio da polso di lusso, edizione limitata, con movimento automatico.', 'Nuovo', 'path/to/rolex_a1_1.jpg', 'path/to/rolex_a1_2.jpg', 'path/to/rolex_a1_3.jpg',2),
-(1200, 'Orologio Elegante B2', 'Omega', 'Orologio elegante con cinturino in pelle, quadrante con datario.', 'Nuovo', 'path/to/omega_b2_1.jpg', 'path/to/omega_b2_2.jpg', 'path/to/omega_b2_3.jpg',2),
-(3500, 'Orologio Sportivo C3', 'Tag Heuer', 'Orologio sportivo con cronografo, resistenza all’acqua fino a 100 metri.', 'Nuovo', 'path/to/tag_heuer_c3_1.jpg', 'path/to/tag_heuer_c3_2.jpg', 'path/to/tag_heuer_c3_3.jpg',2),
-(2000, 'Orologio Luxury D4', 'Patek Philippe', 'Orologio di lusso con cassa in oro e cinturino in metallo.', 'Nuovo', 'path/to/patek_philippe_d4_1.jpg', 'path/to/patek_philippe_d4_2.jpg', 'path/to/patek_philippe_d4_3.jpg',2),
-(800, 'Orologio Casual E5', 'Seiko', 'Orologio casual con design minimalista e cinturino in acciaio inox.', 'Nuovo', 'path/to/seiko_e5_1.jpg', 'path/to/seiko_e5_2.jpg', 'path/to/seiko_e5_3.jpg',2);
-
+(5000, 'Orologio Lusso A1', 'Rolex', 'Orologio da polso di lusso, edizione limitata, con movimento automatico.', 'Nuovo', 'templates/public/images/img-card-example.png', 'templates/public/images/img-card-example.png', 'templates/public/images/img-card-example.png', 2),
+(1200, 'Orologio Elegante B2', 'Omega', 'Orologio elegante con cinturino in pelle, quadrante con datario.', 'Nuovo', 'templates/public/images/img-card-example.png', 'templates/public/images/img-card-example.png', 'templates/public/images/img-card-example.png', 2),
+(3500, 'Orologio Sportivo C3', 'Tag Heuer', 'Orologio sportivo con cronografo, resistenza all’acqua fino a 100 metri.', 'Nuovo', 'templates/public/images/img-card-example.png', 'templates/public/images/img-card-example.png', 'templates/public/images/img-card-example.png', 2),
+(2000, 'Orologio Luxury D4', 'Patek Philippe', 'Orologio di lusso con cassa in oro e cinturino in metallo.', 'Nuovo', 'templates/public/images/img-card-example.png', 'templates/public/images/img-card-example.png', 'templates/public/images/img-card-example.png', 2),
+(800, 'Orologio Casual E5', 'Seiko', 'Orologio casual con design minimalista e cinturino in acciaio inox.', 'Nuovo', 'templates/public/images/img-card-example.png', 'templates/public/images/img-card-example.png', 'templates/public/images/img-card-example.png', 2);
 
 INSERT INTO Ordine (data, prezzoTotale, nome, cognome, email, indirizzo, citta, user_id, codiceOrdine)
 VALUES

@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="welcome">
-  <h4 class="text-light text-center" style="padding: 250px 0; font-size: 100px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+  <h4 class="text-light text-start fs-1" style="padding: 250px 50px;">
     {% if isLogged %}
     Benvenuto {{session.nome}}
     {% else %}
@@ -15,7 +15,7 @@
   <!--START banner section-->
   <div class="row mt-3">
       <div class="col-12 col-md-6">
-          <img src="{{ asset('images/image-banner.png') }}" 
+          <img src="{{ asset('images/image-banner.jpg') }}" 
           alt="Orologio" 
           class="img-fluid d-md-block" 
           style="width: 100%; max-width: 600px;">
@@ -35,48 +35,39 @@
         </div>
   </div>
   <!--END banner section -->
-  <!--START cards section-->
-  <section class="cards mt-4">
-      <div class="row">
-        {% if not_found_message %}
-        <div class="alert alert-danger alert-dismissible w-50 mt-3" role="alert">   
-          <div>Nessun risultato trovato</div>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endif %}
-        <!--Start success di conferma aggiunta al carrello-->
-        <div class="modal fade" id="successAddedToCartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header bg-success">
-                <p class="modal-title fs-5" id="staticBackdropLabel">articolo aggiunto al carrello</p>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--End success di conferma aggiunta al carrello-->
-        {% for product in products %}
-          <div class="col-md-3">
-            <div class="card mt-3 p-2">
-              <img src="{{ asset('images/img-card-example.png') }}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">{{product.name}}</h5>
-                <p class="card-text text-truncate">{{product.marca}} {{product.descrizione}}</p>
-              </div>
-              <div class="card-footer">
-                <a href="/prodotto?id={{product.id}}" class="card-link text-primary">Informazioni</a>
-                <a id="successAddedToCart" class="btn btn-primary mt-2" onclick="addProductToCart({{product.id}},'{{product.name}}',{{product.unitCost}},1,'{{product.imgPath1}}')" data-bs-toggle="modal" data-bs-target="#successAddedToCartModal">Aggiungi al carrello</a>
-              </div>
-            </div>
-          <!--End success di conferma aggiunta al carrello-->
-          </div>
-        {% endfor %}
-          <!-- Altre card qui -->
-        </div>
-  </section>
-  <!--END cards section -->
+
+  <!-- Sezione Parallax -->
+  <div class="parallax mt-5"></div>
+
+  <!-- Contenuto di Scrolling -->
+  <div class="container content d-flex justify-content-center align-items-center">
+    <span>
+      <h5 class="text-center fs-1">Qualità e Stile Unico</h5>
+      <p class="text-center">Su <strong>Eterna Elefanza</strong>, ogni orologio è una combinazione di precisione, design senza tempo e materiali di alta qualità.  
+        Collaboriamo con i migliori brand e artigiani per offrirti una collezione esclusiva di orologi che si adattano perfettamente al tuo stile, sia per un look elegante che casual.
+        Investiamo nel valore dell'eccellenza, garantendo prodotti autentici e duraturi che segnano ogni momento speciale della tua vita.</p>  
+      <a class="btn btn-primary w-100 mx-auto" href="/catalogo_prodotti" >Visita il nostro catalogo</a>
+    </span>
+  </div>
+
+  <!-- Sezione Parallax -->
+  <div class="parallax mt-5"></div>
+
+  <!-- Contenuto di Scrolling -->
+  <div class="container content d-flex justify-content-center align-items-center">
+    <span>
+      <h5 class="text-center fs-1">Esperienza d'Acquisto Impeccabile</h5>
+      <p class="text-center">Acquistare su <strong>Eterna Elefanza</strong> significa affidarsi a un servizio sicuro, veloce e attento alle tue esigenze.  
+        Offriamo spedizioni rapide, pagamenti sicuri e un team di supporto dedicato per garantirti un'esperienza senza stress.  
+        Che tu stia cercando un regalo speciale o un accessorio esclusivo per te, siamo qui per aiutarti a fare la scelta giusta con fiducia.</p>  
+      <a class="btn btn-primary w-100 mx-auto" href="/catalogo_prodotti" >Visita il nostro catalogo</a>
+    </span>
+  </div>
+
+
 </div>
+
+
 
 <script src="{{ asset('js/productDetail.js') }}" type="module"></script>
 

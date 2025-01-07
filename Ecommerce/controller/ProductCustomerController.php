@@ -56,6 +56,17 @@ class ProductCustomerController {
 
             try {
                 $idOrdine = $ordine->save();
+                //Invio notifica al cliente dell'acquisto
+                if(isset($_SESSION["email"])) {
+                    $notification = new NotificheModel(array(
+                        "id" => 0,
+                        "testo" => "Grazie di averci scelto, il tuo ordine è stato preso in carico!",
+                        "data" => date("Y-m-d"),
+                        "user_id" => UserModel::get($_SESSION["email"])->id,
+                        "letta" => 0
+                    ));
+                    $notification->save();
+                }
                 $productDetails = getCartFromCookie();
 
                 foreach ($productDetails as $detail) {
@@ -64,6 +75,17 @@ class ProductCustomerController {
                         "idProduct" => $detail["id"],
                         "quantita" => $detail["quantity"]
                     ));
+                    //Invio notifica al venditore
+                    $productOrdered = ProductModel::get($detail["id"]);
+                    $notification = new NotificheModel(array(
+                        "id" => 0,
+                        "testo" => "Hai un nuovo ordine per ". $productOrdered->name,
+                        "data" => date("Y-m-d"),
+                        "user_id" => $productOrdered->vendor_id,
+                        "letta" => 0
+                    ));
+                    $notification->save();
+
                     try {
                         $pivot->save();
                     } catch (Exception $err) {

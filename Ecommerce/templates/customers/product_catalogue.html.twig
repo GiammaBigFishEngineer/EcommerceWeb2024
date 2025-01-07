@@ -62,7 +62,7 @@
       {% for product in products %}
         <div class="col-md-3">
           <div class="card mt-3 p-2">
-            <img src="{{ asset('images/img-card-example.png') }}" class="card-img-top" alt="...">
+            <img src="{{product.imgPath1}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{product.name}}</h5>
               <p class="card-text text-truncate">{{product.marca}} {{product.descrizione}}</p>

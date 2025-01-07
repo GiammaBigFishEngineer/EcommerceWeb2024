@@ -11,6 +11,7 @@ require_once (__ROOT__ . '/controller/ProductVendorController.php');
 
 
 session_start();
+$_SESSION["pageTitlte"] = "Eterna Eleganza";
 class Dispatcher
 {
     private $method;
@@ -32,7 +33,12 @@ class Dispatcher
                 $_SESSION["pageTitlte"] = "Eterna Eleganza";
                 break;
             
+            case "/segna-notifica-letta":
+                UserController::signReadNotifica();
+                break;
+            
             case "/catalogo_prodotti":
+                UserController::renderNotifiche();
                 ProductCustomerController::renderFilteredProducts();
                 $_SESSION["pageTitlte"] = "Catalogo Prodotti";
                 break;
@@ -83,25 +89,21 @@ class Dispatcher
                 OrderVendorController::listOrders();
                 $_SESSION["pageTitlte"] = "Ordini Venditore";
                 break;
-            
-
-            case "/vendorProducts":
-                UserController::renderNotifiche();
-                ProductVendorController::listProducts();
-                $_SESSION["pageTitlte"] = "Prodotti Venditore";
-                break;
 
             case "/productForm":
                 UserController::renderNotifiche();
                 ProductVendorController::createProduct();
-                //ProductVendorController::editProduct($_GET["id"]);
-                //ProductVendorController::deleteProduct($_GET["id"]);
+                $_SESSION["pageTitlte"] = "Prodotti Venditore";
                 break;
 
             case "/ListinoProdotti":
                 UserController::renderNotifiche();
                 ProductVendorController::listProducts();
-
+                $_SESSION["pageTitlte"] = "Prodotti Venditore";
+                break;
+            
+            case "/elimina_prodotto":
+                ProductVendorController::deleteProduct();
                 break;
 
             default:
