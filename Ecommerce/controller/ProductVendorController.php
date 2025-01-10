@@ -72,7 +72,9 @@ class ProductVendorController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = json_decode(file_get_contents("php://input"), true);
             $productId = $data['id'];
-        
+
+            $product = ProductModel::get($productId);
+            $result = deleteImagesFromProjectRoot($product->imgPath1, $product->imgPath2, $product->imgPath3);
             ProductModel::delete($productId);
             http_response_code(200); // Risposta OK
             header('Location: /ListinoProdotti');

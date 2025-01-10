@@ -101,6 +101,8 @@ class ProductCustomerController {
                 echo $err;
             }
 
+        }else{
+            UserController::renderNotifiche();
         }
 
         $view = new CheckoutView();

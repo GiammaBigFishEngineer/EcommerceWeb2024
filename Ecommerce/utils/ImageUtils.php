@@ -49,3 +49,29 @@ function saveProductImages($files) {
         throw new Exception("Non tutte le immagini sono state caricate correttamente.");
     }
 }
+
+function deleteImagesFromProjectRoot($image1, $image2, $image3) {
+    // Array di risultati
+    $results = [];
+
+    // Array di immagini da elaborare
+    $images = [$image1, $image2, $image3];
+
+    foreach ($images as $image) {
+        // Calcola il percorso completo dell'immagine
+        $fullPath = __ROOT__ . '/' . $image;
+        echo $fullPath;
+        if (file_exists($fullPath)) {
+            // Tenta di eliminare l'immagine
+            if (unlink($fullPath)) {
+                $results[$image] = "Cancellato con successo";
+            } else {
+                $results[$image] = "Errore durante l'eliminazione";
+            }
+        } else {
+            $results[$image] = "File non trovato";
+        }
+    }
+
+    return $results;
+}

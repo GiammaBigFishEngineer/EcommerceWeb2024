@@ -50,7 +50,6 @@ class Dispatcher
                 break;
 
             case "/checkout":
-                UserController::renderNotifiche();
                 ProductCustomerController::checkout();
                 $_SESSION["pageTitlte"] = "Pagina Pagamento";
                 break;
